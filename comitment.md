@@ -37,3 +37,16 @@ Hur, när och vem gör code review/merges = Vi träffas nästintill varje dag (b
 Hur hanterar ni att göra listan/backlogen =  Vi använder Github project. 
 
 Vår tidsplan = Är det någon som hamnar efter så hjälps vi åt och löser det. Kommunicera ofta och våga säg till om du fastnar, så hjälps vi åt. Är det så att någon hamnar före i tid så kommunicerar vi detta och ser om man kan hjälpa någon, eller tar en ny punkt från listan. 
+
+
+Scrum master: 
+
+18 & 19 december = Maria 
+
+20 & 23 december = Jonatan 
+
+27 & 30 december = Ellinor 
+
+2 & 3 januari = Alexandra 
+
+7 & 9 januari = Alicia 

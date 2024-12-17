@@ -1,17 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Mulberry beauty-quiz</title>
   </head>
   <body>
-    <h1>Hejhej</h1>
-    <h2>Ellinor test</h2>
-    <h3>Test!</h3>
-    <div id="app"></div>
-    <p>test</p>
+    <header>
+      <h1>Mulberry Beauty</h1>
+      <div id="timer"></div>
+    </header>
+    
+    <main>
+      <section class="welcome">
+        <h2>Välkommen</h2>
+        <button id="startQuiz">Starta quiz</button>
+      </section>
+
+      <section class="questions">
+        <h2 id="questionTitle">Fråga nr</h2>
+        <div id="questionContainer">
+          <!--- lägg till frågor med ts-->
+        </div>
+        <button id="nextQuestion">Nästa fråga</button>
+      </section>
+
+      <section class="scoreboard">
+        <h2>Scoreboard</h2>
+        <div id="scoreboardContainer">
+          <!-- generera med ts -->
+        </div>
+        <button id="playAgain">Spela igen</button>
+      </section>
+      
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+
+

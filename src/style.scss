@@ -1,9 +1,9 @@
-@import "src/vendor/_normalize.scss";
+@import "/src/vendor/_normalize.scss";
 
-@import "src/sass/_variables";
+@import "/src/sass/_variables";
 
-@import "src/sass/_base";
+@import "/src/sass/_base";
 
 @media screen and (min-width: 640px) {
-  @import "src/sass/_desktop";
+  @import "/src/sass/_desktop";
 }

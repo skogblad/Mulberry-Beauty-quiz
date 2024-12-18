@@ -57,10 +57,19 @@ function startQuiz(): void {
 function handlePlayAgain(): void {
     document.getElementById("nextQuestion")!.removeAttribute("disabled");
     startQuiz();
-  }
+}
   
 // When the page is loaded
 document.addEventListener("DOMContentLoaded", () => {
-document.getElementById("startQuiz")!.addEventListener("click", startQuiz);
-document.getElementById("playAgain")!.addEventListener("click", handlePlayAgain);
+    const startQuizButton = document.getElementById("startQuiz");
+    const playAgainButton = document.getElementById("playAgain");
+  
+    // If the buttons exist, add event listener
+    if (startQuizButton) {
+      startQuizButton.addEventListener("click", startQuiz);
+    }
+  
+    if (playAgainButton) {
+      playAgainButton.addEventListener("click", handlePlayAgain);
+    }
 });

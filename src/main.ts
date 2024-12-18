@@ -1,6 +1,5 @@
 import "./style.scss";
-import quizQuestions from "./questions.mts";
-import { Question } from "./questions.mts";
+import quizQuestions, { Question } from "./questions.mts";
 
 // Variabel for questions
 let currentQuestionIndex = 0;

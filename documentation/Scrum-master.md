@@ -49,4 +49,6 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 #### Vad som kan hindra oss från att uppnå våra mål: 
 - Alicia & Alexandra väntar på kod för att kunna komma vidare - granska och pusha Ellinors kod så de kan komma vidare 
 
+![project board 24-12-19](daily-2024-12-19.png)
+
 ---

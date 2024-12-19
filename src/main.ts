@@ -1,13 +1,13 @@
 import "./style.scss";
-import quizQuestions, { Question } from "./questions.mts";
+import quizQuestions, { IQuestion } from "./questions.mts";
 
 // Variabel for questions
 let currentQuestionIndex = 0;
-let selectedQuestions: Question[] = [];
-const usedQuestions: Set<Question> = new Set();
+let selectedQuestions: IQuestion[] = [];
+const usedQuestions: Set<IQuestion> = new Set();
 
 // Function for randomize questions
-function selectRandomQuestions(): Question[] {
+function selectRandomQuestions(): IQuestion[] {
     const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q));
   
     // If the user played two times the quiz starts over

@@ -14,6 +14,13 @@ const questionsSection: any = document.getElementById("questions");
 function startQuiz() { 
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
+  
+  selectedQuestions = selectRandomQuestions();
+    currentQuestionIndex = 0;
+
+    displayQuestion();
+
+    document.getElementById("nextQuestion")!.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -56,16 +63,6 @@ function displayQuestion(): void {
 function handleNextQuestion(): void {
   currentQuestionIndex++;
   displayQuestion();
-}
-
-// When start quiz is clicked the questions display
-function startQuiz(): void {
-    selectedQuestions = selectRandomQuestions();
-    currentQuestionIndex = 0;
-
-    displayQuestion();
-
-    document.getElementById("nextQuestion")!.addEventListener("click", handleNextQuestion);
 }
 
 // Start over the quiz

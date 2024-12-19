@@ -32,8 +32,6 @@ function startQuiz() {
 
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
-
-  displayQuestion(questionIndex);
 }
 
 // Timer functions
@@ -57,44 +55,6 @@ function stopTimer() {
 function resetTimer() {
   elapsedTime = 0;
   timerElement.textContent = `Tid: 0s`;
-}
-
-// Display next question
-function displayQuestion(index: number) {
-  const question = quizQuestions[index]; 
-  document.getElementById("questionTitle")!.textContent = `Fråga ${index + 1}`;
-
-  const questionContainer = document.getElementById("questionContainer")!;
-  questionContainer.innerHTML = ''; 
-
-  question.answers.forEach((answer: string) => {
-    const button = document.createElement("button");
-    button.textContent = answer;
-    button.onclick = () => handleAnswer(question.correctAnswer, answer);
-    questionContainer.appendChild(button);
-  });
-
-  // Show "End Quiz" button on the last question
-  if (index === totalQuestions - 1) {
-    endQuizBtn.classList.remove("hidden");
-  }
-}
-
-// Handle user answer
-function handleAnswer(correctAnswer: string, userAnswer: string) {
-  if (userAnswer === correctAnswer) {
-    console.log("Rätt svar!");
-  } else {
-    console.log("Fel svar!");
-  }
-
-  questionIndex++;
-
-  if (questionIndex === totalQuestions) {
-    endQuiz(); 
-  } else {
-    displayQuestion(questionIndex);
-  }
 }
 
 // End of the quiz and show results

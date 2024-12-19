@@ -35,21 +35,18 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 
 ### 19/12 
 #### Vad vi gjorde igår: 
-- 
-- 
-- 
-- 
+- Fixade Sass och CSS (Maria)
+- Fixade timer (Alexandra)
+- Funktion för svaren så att de visas (Alicia)
+- Gjorde frågorna så de startar när man trycker på frågorna, och att de slumpas fram (Ellinor)
+- Variabel för points och funktioner för att uppdatera poängen när man har valt rätt svar. När man trycker på play again så nollställs poängen (Jonatan)
 
 #### Vad vi ska göra idag: 
-- 
-- 
-- 
-- 
+- Granska pull requests (Alla) 
+- Jämföra med Ellinors kod (Alicia) 
+- Se över timer-koden och byta ut placeholders (Alexandra) 
 
 #### Vad som kan hindra oss från att uppnå våra mål: 
-- 
-- 
-- 
-- 
+- Alicia & Alexandra väntar på kod för att kunna komma vidare - granska och pusha Ellinors kod så de kan komma vidare 
 
 ---

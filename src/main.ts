@@ -1,6 +1,21 @@
 import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
+// Starta quiz-knappen
+const startQuizBtn: any = document.getElementById("startQuiz");
+
+startQuizBtn.addEventListener("click", startQuiz);
+
+
+const welcomeSection: any = document.getElementById("welcome");
+const questionsSection: any = document.getElementById("questions");
+
+// Gömmer startsidan och visar frågesidan
+function startQuiz() { 
+  welcomeSection.classList.add("hidden");
+  questionsSection.classList.remove("hidden");
+}
+
 // Variabel for questions
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];

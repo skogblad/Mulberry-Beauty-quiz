@@ -171,3 +171,5 @@ function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
 function resetPoints(): void {
   points = 0;
 }
+
+console.log(updatePoints());

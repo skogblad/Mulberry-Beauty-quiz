@@ -1,5 +1,5 @@
 // Defination for questions
-interface Question {
+export interface IQuestion {
   id: number;
   question: string;
   answers: string[];
@@ -7,7 +7,7 @@ interface Question {
 }
 
 // Array for questions
-const quizQuestions: Question[] = [
+const quizQuestions: IQuestion[] = [
   {
     id: 0,
     question: "Var ligger Eiffeltornet?",

@@ -50,12 +50,16 @@ function displayQuestion(): void {
   document.getElementById("question")!.innerHTML = `
     ${question.question}
   `;
+
+  // Show the answer for the question as well
+  displayQuizAnswers();
 }
 
 // Function for next question
 function handleNextQuestion(): void {
   currentQuestionIndex++;
   displayQuestion();
+  displayQuizAnswers();
 }
 
 // When start quiz is clicked the questions display
@@ -88,3 +92,54 @@ document.addEventListener("DOMContentLoaded", () => {
       playAgainButton.addEventListener("click", handlePlayAgain);
     }
 });
+
+// ----- TO DO: -----
+// Scss: Lägg till style för rätt/fel
+
+const answersContainer = document.getElementById("answers") as HTMLElement;
+const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
+
+// Show the answers for the quiz questions
+function displayQuizAnswers() {
+  answersContainer.innerHTML = "";
+
+  const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+  currentQuestion.answers.forEach((answer, index) => {
+    answersContainer.innerHTML += `
+      <label>
+        <input type="radio" name="quizAnswer" value="${answer}" id="answer${index}">
+        <span>${answer}</span>
+      </label>
+    `;
+  })
+ 
+  const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
+
+  // Add an event for each radioBtn when pressing it
+  radioButtons.forEach((radioButton) => {
+    radioButton.addEventListener("change", () => {
+      const correctAnswer = currentQuestion.correctAnswer;
+
+      // Resets the markings on all answers and to the default color
+      document.querySelectorAll("label").forEach((label) => {
+        label.style.color = "initial";
+      });
+
+      // Mark which options are correct/incorrect and adds color
+      radioButtons.forEach((button) => {
+        const answerValue = (button as HTMLInputElement).value;
+
+        if (answerValue === correctAnswer) {
+          button.parentElement!.style.color = "green";
+        } else {
+          button.parentElement!.style.color = "red";
+        }
+      });
+
+      // Show "Nästa fråga"-btn
+      nextQuestionBtn.hidden = false;
+      
+    });
+  });
+}

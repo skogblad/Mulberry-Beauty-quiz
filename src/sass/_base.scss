@@ -1,0 +1,40 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: $black;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+button {
+  background-color: $black;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+

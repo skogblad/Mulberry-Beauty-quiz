@@ -1,13 +1,9 @@
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@import "/src/vendor/_normalize.scss";
 
-.hidden {
-  display: none;
-}
+@import "/src/sass/_variables";
 
-h2 {
-  font-size: 3.5rem;
+@import "/src/sass/_base";
+
+@media screen and (min-width: 640px) {
+  @import "/src/sass/_desktop";
 }

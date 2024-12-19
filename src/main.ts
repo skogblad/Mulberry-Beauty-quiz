@@ -3,7 +3,7 @@ import quizQuestions from "./questions.mts";
 
 console.log(quizQuestions);
 
-// Variabler för quiz och timer
+// Variables for quiz and timer
 let questionIndex = 0;
 const totalQuestions = 10;
 let timerElement: any = document.getElementById("timer");
@@ -11,7 +11,7 @@ let timerInterval: any;
 let elapsedTime: number = 0;
 let isTimerRunning: boolean = false;
 
-// Starta quiz-knappen
+// Start quiz button
 const startQuizBtn: any = document.getElementById("startQuiz");
 const endQuizBtn: any = document.getElementById("endQuiz");
 const playAgainBtn: any = document.getElementById("playAgain");
@@ -25,7 +25,7 @@ const welcomeSection: any = document.getElementById("welcome");
 const questionsSection: any = document.getElementById("questions");
 const scoreboardSection: any = document.getElementById("scoreboard");
 
-// Gömmer startsidan och visar frågesidan
+// Hide welcome page and show the quiz page
 function startQuiz() { 
 
   startTimer();
@@ -36,7 +36,7 @@ function startQuiz() {
   displayQuestion(questionIndex);
 }
 
-// Timerfunktioner
+// Timer functions
 function startTimer() {
   if (isTimerRunning) 
     return; 
@@ -59,7 +59,7 @@ function resetTimer() {
   timerElement.textContent = `Tid: 0s`;
 }
 
-// Visa nästa fråga
+// Display next question
 function displayQuestion(index: number) {
   const question = quizQuestions[index]; 
   document.getElementById("questionTitle")!.textContent = `Fråga ${index + 1}`;
@@ -74,13 +74,13 @@ function displayQuestion(index: number) {
     questionContainer.appendChild(button);
   });
 
-  // Visa "Avsluta spel"-knappen på sista frågan
+  // Show "End Quiz" button on the last question
   if (index === totalQuestions - 1) {
     endQuizBtn.classList.remove("hidden");
   }
 }
 
-// Hantera svar från användaren
+// Handle user answer
 function handleAnswer(correctAnswer: string, userAnswer: string) {
   if (userAnswer === correctAnswer) {
     console.log("Rätt svar!");
@@ -97,25 +97,25 @@ function handleAnswer(correctAnswer: string, userAnswer: string) {
   }
 }
 
-// Slut på quizet och visa resultat
+// End of the quiz and show results
 function endQuiz() {
   stopTimer();
 
-  // Visa scoreboard och göm frågesidan
-  questionsSection.classList.add("hidden");
-  scoreboardSection.classList.remove("hidden");
+// Show scoreboard and hide quiz page
+questionsSection.classList.add("hidden");
+scoreboardSection.classList.remove("hidden");
 
   console.log("Quiz slut!");
 }
 
-// Starta om quizet
+// Start over the quiz
 function playAgain() {
   resetTimer();
   questionIndex = 0;
 
-  // Visa välkomstsidan och göm scoreboard
-  scoreboardSection.classList.add("hidden");
-  welcomeSection.classList.remove("hidden");
+// Show welcome page and hide scoreboard
+scoreboardSection.classList.add("hidden");
+welcomeSection.classList.remove("hidden");
 
 
 }

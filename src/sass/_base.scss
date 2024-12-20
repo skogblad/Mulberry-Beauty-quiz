@@ -16,6 +16,10 @@ button {
   padding: 1rem;
 }
 
+button:disabled {
+  background-color: $grey;
+}
+
 .welcome {
   display: flex;
   flex-direction: column;

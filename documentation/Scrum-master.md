@@ -52,3 +52,27 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 ![project board 24-12-19](daily-2024-12-19.png)
 
 ---
+
+### 20/12 
+#### Vad vi gjorde igår: 
+- (Alla) Reviewade pull requests och merga den kod vi har gjort, skapade Develop branch som vi nu mergar till innan vi mergar till main. Fixade buggar som gjorde att vi inte kunde publicera sidan.
+- (Maria) Reviewa och hjälpa till med andras kod
+- (Alexandra) Fortsatte med timer koden och skapade en pull request för review
+-  (Alicia) Se till att knapparna och funktionerna fungerar ihop med Ellinors kod
+-  (Ellinor) Se till att knapparna och funktionerna fungerar ihop med Alicias kod
+-  (Jonatan) Fixade bug och mergade poäng koden, började med att implementera det i resten av koden.
+
+#### Vad vi ska göra idag: 
+- Granska pull requests, fixa buggar (Alla) 
+- Fortsätta med poäng funktionen, få det att uppdteras vid varje rätt svar och så att det inte går att ändra svar (Jonatan) 
+- Fixa så att svarsalternativen för fråga 10 visas (Alicia)
+- Skapa innehållet för scoreboarden i TS (Alexandra)
+- Gömma frågorna och göra scoreboarden synlig efter 10 frågor har svarats på (Maria)
+- Se till att de 10 nya frågorna visas och att allt annat nollställs när man klickar på "Spela igen" knappen (Ellinor)
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Ingenting för tillfället
+
+![project board 24-12-20](daily-2024-12-20.png)
+
+---

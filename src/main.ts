@@ -225,11 +225,18 @@ scoreboardSection.classList.remove("hidden");
 // Start over the quiz
 function playAgain() {
   resetTimer();
-  currentQuestionIndex = 0;
+  resetPoints();
 
-// Show welcome page and hide scoreboard
-scoreboardSection.classList.add("hidden");
-welcomeSection.classList.remove("hidden");
+  currentQuestionIndex = 0;
+  selectedQuestions = selectRandomQuestions();
+
+  displayQuestion();
+  displayQuizAnswers();
+
+
+  // Show welcome page and hide scoreboard
+  scoreboardSection.classList.add("hidden");
+  welcomeSection.classList.remove("hidden");
 }
 
 init();

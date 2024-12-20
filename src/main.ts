@@ -59,6 +59,10 @@ function selectRandomQuestions(): IQuestion[] {
     return questions;
 }
 
+const nextQuestionButton = document.getElementById("nextQuestion")!;
+const questionTitle = document.getElementById("questionTitle")!;
+const questionElement = document.getElementById("question")!;
+
 // Function for display a question
 function displayQuestion(): void {
   if (currentQuestionIndex >= selectedQuestions.length) {
@@ -67,8 +71,8 @@ function displayQuestion(): void {
   }
   
   const question = selectedQuestions[currentQuestionIndex];
-  document.getElementById("questionTitle")!.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  document.getElementById("question")!.innerHTML = `
+  questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
+  questionElement.innerHTML = `
     ${question.question}
   `;
 
@@ -90,7 +94,7 @@ function handlePlayAgain(): void {
 }
   
 // When the page is loaded
-document.addEventListener("DOMContentLoaded", () => {
+function init() {
     const startQuizButton = document.getElementById("startQuiz");
     const playAgainButton = document.getElementById("playAgain");
   
@@ -102,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (playAgainButton) {
       playAgainButton.addEventListener("click", handlePlayAgain);
     }
-});
+};
 
 const answersContainer = document.getElementById("answers") as HTMLElement;
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
@@ -181,7 +185,7 @@ function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
 // Function to reset the points to 0
 function resetPoints(): void {
   points = 0;
-}
+} 
 
 // Timer functions
 function startTimer() {
@@ -225,9 +229,9 @@ function playAgain() {
 // Show welcome page and hide scoreboard
 scoreboardSection.classList.add("hidden");
 welcomeSection.classList.remove("hidden");
-
-
 }
+
+init();
 
 console.log(updatePoints());
 

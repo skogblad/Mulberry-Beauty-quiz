@@ -1,0 +1,54 @@
+# Scrum-master 
+
+Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar här vår process.
+
+## Tidsplanering 
+- 18 & 19 december = Maria 
+- 20 & 23 december = Jonatan 
+- 27 & 30 december = Ellinor 
+- 2 & 3 januari = Alexandra 
+- 7 & 9 januari = Alicia 
+
+---
+### 18/12 
+#### Vad vi gjorde igår: 
+- Sprintplanering (Alla tillsammans)
+- Grundläggande HTML-struktur (Alla tillsammans)
+- Lägga in frågorna i projektet (Alla tillsammans)
+- Kod för startknapp (Maria)
+
+#### Vad vi ska göra idag: 
+- Påbörja kod för timern (Alexandra)
+- Påbörja kod för svarsalternativ (Alicia)
+- Påbörja kod för att slumpa fram frågor (Ellinor)
+- Påbörja kod för poängräkning (Jonatan)
+- Lägga in Sass-struktur, rensa tidigare styling, lägga in normalize & skapa scrum-logg (Maria)
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Marias kod är inte pushad (Maria)
+- Rensa tidigare styling och lägga in normalize-fil (Maria)
+- Köra fast i hur man ska tänka med koden (avstämning över chatt senare på dagen)
+
+![project board 24-12-18](daily-2024-12-18.png)
+
+--- 
+
+### 19/12 
+#### Vad vi gjorde igår: 
+- Fixade Sass och CSS (Maria)
+- Fixade timer (Alexandra)
+- Funktion för svaren så att de visas (Alicia)
+- Gjorde frågorna så de startar när man trycker på frågorna, och att de slumpas fram (Ellinor)
+- Variabel för points och funktioner för att uppdatera poängen när man har valt rätt svar. När man trycker på play again så nollställs poängen (Jonatan)
+
+#### Vad vi ska göra idag: 
+- Granska pull requests (Alla) 
+- Jämföra med Ellinors kod (Alicia) 
+- Se över timer-koden och byta ut placeholders (Alexandra) 
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Alicia & Alexandra väntar på kod för att kunna komma vidare - granska och pusha Ellinors kod så de kan komma vidare 
+
+![project board 24-12-19](daily-2024-12-19.png)
+
+---

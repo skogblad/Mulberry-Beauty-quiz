@@ -15,16 +15,20 @@
     <main>
       <section class="welcome" id="welcome">
         <h2>Välkommen</h2>
-        <button id="startQuiz">Starta quiz</button>
+        <button id="startQuizBtn">Starta quiz</button>
       </section>
 
       <section class="questions hidden" id="questions">
         <h2 id="questionTitle">Fråga nr</h2>
         <div id="questionContainer">
+          <p id="question"></p>
+          <p id="answers"></p>
           <!--- lägg till frågor med ts-->
         </div>
         <button id="nextQuestionBtn" hidden>Nästa fråga</button>
-        <button id="endQuiz" class="hidden">Avsluta spel</button>
+
+        <button id="endQuizBtn" class="hidden">Avsluta spel</button>
+
       </section>
 
       <section class="scoreboard hidden" id="scoreboard">
@@ -32,7 +36,7 @@
         <div id="scoreboardContainer">
           <!-- generera med ts -->
         </div>
-        <button id="playAgain">Spela igen</button>
+        <button id="playAgainBtn">Spela igen</button>
       </section>
       
     </main>

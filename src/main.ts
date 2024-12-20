@@ -1,17 +1,33 @@
 import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
-// Starta quiz-knappen
-const startQuizBtn: any = document.getElementById("startQuiz");
+// Variables for quiz and timer
+let questionIndex = 0;
+const totalQuestions = 10;
+let timerElement: any = document.getElementById("timer");
+let timerInterval: any;
+let elapsedTime: number = 0;
+let isTimerRunning: boolean = false;
 
-startQuizBtn.addEventListener("click", startQuiz);
+// Start quiz button
+const startQuizBtn: any = document.getElementById("startQuizBtn");
+const endQuizBtn: any = document.getElementById("endQuizBtn");
+const playAgainBtn: any = document.getElementById("playAgainBtn");
+
+startQuizBtn.addEventListener("click", startQuizBtn);
+endQuizBtn.addEventListener("click", endQuizBtn);
+playAgainBtn.addEventListener("click", playAgainBtn);
 
 
 const welcomeSection: any = document.getElementById("welcome");
 const questionsSection: any = document.getElementById("questions");
+const scoreboardSection: any = document.getElementById("scoreboard");
 
-// Gömmer startsidan och visar frågesidan
+// Hide welcome page and show the quiz page
 function startQuiz() { 
+
+  startTimer();
+
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
   
@@ -20,7 +36,7 @@ function startQuiz() {
 
     displayQuestion();
 
-    document.getElementById("nextQuestion")!.addEventListener("click", handleNextQuestion);
+    document.getElementById("nextQuestionBtn")!.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -48,7 +64,7 @@ function selectRandomQuestions(): IQuestion[] {
 // Function for display a question
 function displayQuestion(): void {
   if (currentQuestionIndex >= selectedQuestions.length) {
-    document.getElementById("nextQuestion")!.setAttribute("disabled", "true");
+    document.getElementById("nextQuestionBtn")!.setAttribute("disabled", "true");
     return;
   }
   
@@ -71,7 +87,7 @@ function handleNextQuestion(): void {
 
 // Start over the quiz
 function handlePlayAgain(): void {
-    document.getElementById("nextQuestion")!.removeAttribute("disabled");
+    document.getElementById("nextQuestionBtn")!.removeAttribute("disabled");
     startQuiz();
 }
   
@@ -89,9 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
       playAgainButton.addEventListener("click", handlePlayAgain);
     }
 });
-
-// ----- TO DO: -----
-// Scss: Lägg till style för rätt/fel
 
 const answersContainer = document.getElementById("answers") as HTMLElement;
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
@@ -172,4 +185,51 @@ function resetPoints(): void {
   points = 0;
 }
 
+// Timer functions
+function startTimer() {
+  if (isTimerRunning) 
+    return; 
+  
+  timerInterval = setInterval(() => {
+    elapsedTime++;
+    timerElement.textContent = `Tid: ${elapsedTime}s`; 
+  }, 1000);
+
+  isTimerRunning = true;
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+}
+
+function resetTimer() {
+  elapsedTime = 0;
+  timerElement.textContent = `Tid: 0s`;
+}
+
+// End of the quiz and show results
+function endQuiz() {
+  stopTimer();
+
+// Show scoreboard and hide quiz page
+questionsSection.classList.add("hidden");
+scoreboardSection.classList.remove("hidden");
+
+  console.log("Quiz slut!");
+}
+
+// Start over the quiz
+function playAgain() {
+  resetTimer();
+  questionIndex = 0;
+
+// Show welcome page and hide scoreboard
+scoreboardSection.classList.add("hidden");
+welcomeSection.classList.remove("hidden");
+
+
+}
+
 console.log(updatePoints());
+

@@ -9,13 +9,13 @@
   <body>
     <header>
       <h1>Mulberry Beauty</h1>
-      <div id="timer"></div>
+      <div id="timer">Tid: 0s</div>
     </header>
     
     <main>
       <section class="welcome" id="welcome">
         <h2>Välkommen</h2>
-        <button id="startQuiz">Starta quiz</button>
+        <button id="startQuizBtn">Starta quiz</button>
       </section>
 
       <section class="questions hidden" id="questions">
@@ -26,6 +26,9 @@
           <!--- lägg till frågor med ts-->
         </div>
         <button id="nextQuestionBtn" hidden>Nästa fråga</button>
+
+        <button id="endQuizBtn" class="hidden">Avsluta spel</button>
+
       </section>
 
       <section class="scoreboard hidden" id="scoreboard">
@@ -33,7 +36,7 @@
         <div id="scoreboardContainer">
           <!-- generera med ts -->
         </div>
-        <button id="playAgain">Spela igen</button>
+        <button id="playAgainBtn">Spela igen</button>
       </section>
       
     </main>

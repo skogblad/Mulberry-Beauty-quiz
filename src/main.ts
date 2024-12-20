@@ -2,8 +2,6 @@ import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
 // Variables for quiz and timer
-let questionIndex = 0;
-const totalQuestions = 10;
 let timerElement: any = document.getElementById("timer");
 let timerInterval: any;
 let elapsedTime: number = 0;
@@ -14,9 +12,9 @@ const startQuizBtn: any = document.getElementById("startQuizBtn");
 const endQuizBtn: any = document.getElementById("endQuizBtn");
 const playAgainBtn: any = document.getElementById("playAgainBtn");
 
-startQuizBtn.addEventListener("click", startQuizBtn);
-endQuizBtn.addEventListener("click", endQuizBtn);
-playAgainBtn.addEventListener("click", playAgainBtn);
+startQuizBtn.addEventListener("click", startQuiz);
+endQuizBtn.addEventListener("click", endQuiz);
+playAgainBtn.addEventListener("click", playAgain);
 
 
 const welcomeSection: any = document.getElementById("welcome");
@@ -222,7 +220,7 @@ scoreboardSection.classList.remove("hidden");
 // Start over the quiz
 function playAgain() {
   resetTimer();
-  questionIndex = 0;
+  currentQuestionIndex = 0;
 
 // Show welcome page and hide scoreboard
 scoreboardSection.classList.add("hidden");

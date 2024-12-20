@@ -27,9 +27,6 @@ function startQuiz() {
 
   startTimer();
 
-  // Hide "End game"-btn if playing again
-  endQuizBtn.hidden = true;
-
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
   
@@ -78,8 +75,6 @@ function displayQuestion(): void {
   questionElement.innerHTML = `
     ${question.question}
   `;
-
-  console.log(currentQuestionIndex);
 
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn
@@ -233,7 +228,6 @@ function endQuiz() {
   questionsSection.classList.add("hidden");
   scoreboardSection.classList.remove("hidden");
 
-  console.log("Quiz slut!");
 }
 
 // Start over the quiz
@@ -241,9 +235,13 @@ function playAgain() {
   resetTimer();
   currentQuestionIndex = 0;
 
-// Show welcome page and hide scoreboard
-scoreboardSection.classList.add("hidden");
-welcomeSection.classList.remove("hidden");
+  // Disable and hide "End game"-btn if playing again
+  endQuizBtn.setAttribute("disabled", "true");
+  endQuizBtn.hidden = true;
+
+  // Show welcome page and hide scoreboard
+  scoreboardSection.classList.add("hidden");
+  welcomeSection.classList.remove("hidden");
 }
 
 init();

@@ -64,7 +64,7 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 
 #### Vad vi ska göra idag: 
 - Granska pull requests, fixa buggar (Alla) 
-- Fortsätta med poäng funktionen, få det att uppdteras vid varje rätt svar och så att det inte går att ändra svar (Jonatan) 
+- Fortsätta med poäng funktionen, få det att uppdateras vid varje rätt svar och så att det inte går att ändra svar (Jonatan) 
 - Fixa så att svarsalternativen för fråga 10 visas (Alicia)
 - Skapa innehållet för scoreboarden i TS (Alexandra)
 - Gömma frågorna och göra scoreboarden synlig efter 10 frågor har svarats på (Maria)

@@ -27,7 +27,9 @@ function startQuiz() {
 
   startTimer();
 
+  // Hide "End game"-btn if playing again
   endQuizBtn.hidden = true;
+
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
   
@@ -76,6 +78,17 @@ function displayQuestion(): void {
   questionElement.innerHTML = `
     ${question.question}
   `;
+
+  console.log(currentQuestionIndex);
+
+  if (currentQuestionIndex <= 8) {
+    // Show "Next question"-btn
+    nextQuestionBtn.hidden = false;
+  } else {
+    // Hide "Next question"-btn and show "End game"-btn 
+    nextQuestionBtn.hidden = true;
+    endQuizBtn.hidden = false;
+  }
 
   // Show the answer for the question as well
   displayQuizAnswers();
@@ -150,16 +163,9 @@ function displayQuizAnswers() {
         }
       });
 
-      console.log(currentQuestionIndex);
-
-      if (currentQuestionIndex <= 8) {
-        // Show "Next question"-btn
-        nextQuestionBtn.hidden = false;
-      } else {
-        nextQuestionBtn.hidden = true;
-        endQuizBtn.hidden = false;
+      if (currentQuestionIndex >= 9) {
+        endQuizBtn.removeAttribute("disabled");
       }
-      
     });
   });
 }

@@ -27,6 +27,7 @@ function startQuiz() {
 
   startTimer();
 
+  endQuizBtn.hidden = true;
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
   
@@ -149,8 +150,15 @@ function displayQuizAnswers() {
         }
       });
 
-      // Show "Nästa fråga"-btn
-      nextQuestionBtn.hidden = false;
+      console.log(currentQuestionIndex);
+
+      if (currentQuestionIndex <= 8) {
+        // Show "Next question"-btn
+        nextQuestionBtn.hidden = false;
+      } else {
+        nextQuestionBtn.hidden = true;
+        endQuizBtn.hidden = false;
+      }
       
     });
   });
@@ -215,9 +223,9 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
-// Show scoreboard and hide quiz page
-questionsSection.classList.add("hidden");
-scoreboardSection.classList.remove("hidden");
+  // Show scoreboard and hide quiz page
+  questionsSection.classList.add("hidden");
+  scoreboardSection.classList.remove("hidden");
 
   console.log("Quiz slut!");
 }

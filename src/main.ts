@@ -2,24 +2,25 @@ import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
 // Variables for quiz and timer
-let timerElement: any = document.getElementById("timer");
-let timerInterval: any;
+const timerElement = document.getElementById("timer") as HTMLElement;
+let timerInterval: number;
 let elapsedTime: number = 0;
 let isTimerRunning: boolean = false;
 
 // Start quiz button
-const startQuizBtn: any = document.getElementById("startQuizBtn");
-const endQuizBtn: any = document.getElementById("endQuizBtn");
-const playAgainBtn: any = document.getElementById("playAgainBtn");
+const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
+const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
+const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
 playAgainBtn.addEventListener("click", playAgain);
 
 
-const welcomeSection: any = document.getElementById("welcome");
-const questionsSection: any = document.getElementById("questions");
-const scoreboardSection: any = document.getElementById("scoreboard");
+const welcomeSection = document.getElementById("welcome") as HTMLElement;
+const questionsSection = document.getElementById("questions") as HTMLElement;
+const scoreboardSection = document.getElementById("scoreboard") as HTMLElement;
+
 
 // Hide welcome page and show the quiz page
 function startQuiz() { 
@@ -59,7 +60,6 @@ function selectRandomQuestions(): IQuestion[] {
     return questions;
 }
 
-const nextQuestionButton = document.getElementById("nextQuestion")!;
 const questionTitle = document.getElementById("questionTitle")!;
 const questionElement = document.getElementById("question")!;
 
@@ -157,6 +157,7 @@ function displayQuizAnswers() {
 }
 
 let points: number = 0;
+console.log(points);
 
 // Function to update the points
 function updatePoints(): void {

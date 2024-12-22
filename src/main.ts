@@ -110,6 +110,7 @@ function init() {
 
 const answersContainer = document.getElementById("answers") as HTMLElement;
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
+let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
@@ -127,7 +128,6 @@ function displayQuizAnswers() {
   })
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
-
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
@@ -144,9 +144,14 @@ function displayQuizAnswers() {
 
         if (answerValue === correctAnswer) {
           button.parentElement!.style.color = "green";
+          points++
+    
         } else {
           button.parentElement!.style.color = "red";
         }
+
+        (button as HTMLInputElement).disabled = true;
+        
       });
 
       // Show "Nästa fråga"-btn
@@ -156,30 +161,10 @@ function displayQuizAnswers() {
   });
 }
 
-let points: number = 0;
-console.log(points);
-
-// Function to update the points
-function updatePoints(): void {
-  // Get the radio buttons shown on the page
-  const radioBtns: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='radio']");
-  
-  // Add an event listener for each radio button and link it to the function "checkAnswers"
-  radioBtns.forEach((radioBtn) => {
-    radioBtn.addEventListener("click", () => checkAnswer(radioBtn));
-  });
-
   // Get the "play again" button and reset points on click if it exists
   const playAgainBtn: HTMLButtonElement | null = document.getElementById("playAgain") as HTMLButtonElement | null;
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
-  }
-}
-
-// Function to check if the selected radio button is the correct answer
-function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
-  if (selectedRadioBtn.id === "correctAnswer") {
-    points++;
   }
 }
 

@@ -117,7 +117,7 @@ function init() {
     }
 };
 
-const answersContainer = document.getElementById("answers") as HTMLElement;
+
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 
 // Show the answers for the quiz questions
@@ -188,7 +188,7 @@ function updatePoints(): void {
 
 // Function to check if the selected radio button is the correct answer
 function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
-  const currentQuestion = selectedQuestions[currentQuestionIndex];
+  //const currentQuestion = selectedQuestions[currentQuestionIndex];
 
   if (selectedRadioBtn.id === "correctAnswer") {
     points++;

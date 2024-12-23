@@ -132,27 +132,33 @@ function displayQuizAnswers() {
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
       const correctAnswer = currentQuestion.correctAnswer;
-
+  
       // Resets the markings on all answers and to the default color
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
-
+  
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
-
+  
         if (answerValue === correctAnswer) {
           button.parentElement!.style.color = "green";
-          points++
-    
+          (button as HTMLInputElement).id = "correctAnswer";
         } else {
           button.parentElement!.style.color = "red";
         }
-
+  
+        // Check if the selected answer is correct
+        if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
+          points++;
+        }
+  
+        // Disable all radio buttons after one is pressed
         (button as HTMLInputElement).disabled = true;
-        
       });
+
+      console.log("Poäng: ", points);
 
       // Show "Nästa fråga"-btn
       nextQuestionBtn.hidden = false;
@@ -161,12 +167,10 @@ function displayQuizAnswers() {
   });
 }
 
-  // Get the "play again" button and reset points on click if it exists
-  const playAgainBtn: HTMLButtonElement | null = document.getElementById("playAgain") as HTMLButtonElement | null;
+  // Get the "play again" button and reset points on click if it exist
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
   }
-}
 
 // Function to reset the points to 0
 function resetPoints(): void {
@@ -218,6 +222,4 @@ welcomeSection.classList.remove("hidden");
 }
 
 init();
-
-console.log(updatePoints());
 

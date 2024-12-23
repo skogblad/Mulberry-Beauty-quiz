@@ -39,6 +39,8 @@ function startQuiz() {
 }
 
 // Variabel for questions
+let correctAnswers: number = 0;
+let totalTime: number = 0;
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];
 const usedQuestions: Set<IQuestion> = new Set();
@@ -72,9 +74,16 @@ function displayQuestion(): void {
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  questionElement.innerHTML = `
-    ${question.question}
-  `;
+  questionElement.innerHTML = `${question.question}`;
+
+  if (currentQuestionIndex <= 8) {
+    // Show "Next question"-btn
+    nextQuestionBtn.hidden = false;
+  } else {
+    // Hide "Next question"-btn and show "End game"-btn 
+    nextQuestionBtn.hidden = true;
+    endQuizBtn.hidden = false;
+  }
 
   // Show the answer for the question as well
   displayQuizAnswers();
@@ -108,11 +117,13 @@ function init() {
     }
 };
 
-const answersContainer = document.getElementById("answers") as HTMLElement;
+
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
+let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
+  const answersContainer = document.getElementById("answers") as HTMLElement;
   answersContainer.innerHTML = "";
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -127,61 +138,47 @@ function displayQuizAnswers() {
   })
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
-
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
       const correctAnswer = currentQuestion.correctAnswer;
-
+  
       // Resets the markings on all answers and to the default color
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
-
+  
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
-
+  
         if (answerValue === correctAnswer) {
           button.parentElement!.style.color = "green";
+          (button as HTMLInputElement).id = "correctAnswer";
         } else {
           button.parentElement!.style.color = "red";
         }
+  
+        // Check if the selected answer is correct
+        if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
+          points++;
+        }
+  
+        // Disable all radio buttons after one is pressed
+        (button as HTMLInputElement).disabled = true;
       });
-
-      // Show "Nästa fråga"-btn
-      nextQuestionBtn.hidden = false;
       
+      if (currentQuestionIndex >= 9) {
+        endQuizBtn.removeAttribute("disabled");
+      }
     });
   });
 }
 
-let points: number = 0;
-console.log(points);
-
-// Function to update the points
-function updatePoints(): void {
-  // Get the radio buttons shown on the page
-  const radioBtns: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='radio']");
-  
-  // Add an event listener for each radio button and link it to the function "checkAnswers"
-  radioBtns.forEach((radioBtn) => {
-    radioBtn.addEventListener("click", () => checkAnswer(radioBtn));
-  });
-
-  // Get the "play again" button and reset points on click if it exists
-  const playAgainBtn: HTMLButtonElement | null = document.getElementById("playAgain") as HTMLButtonElement | null;
+  // Get the "play again" button and reset points on click if it exist
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
   }
-}
-
-// Function to check if the selected radio button is the correct answer
-function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
-  if (selectedRadioBtn.id === "correctAnswer") {
-    points++;
-  }
-}
 
 // Function to reset the points to 0
 function resetPoints(): void {
@@ -215,24 +212,47 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
-// Show scoreboard and hide quiz page
-questionsSection.classList.add("hidden");
-scoreboardSection.classList.remove("hidden");
 
-  console.log("Quiz slut!");
+  // Show scoreboard and hide quiz page
+  questionsSection.classList.add("hidden");
+  scoreboardSection.classList.remove("hidden");
+  // Uppdatera total tid
+  totalTime = elapsedTime;
+
+// Update the scoreboard
+  const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
+  scoreboardContainer.innerHTML = `
+    <p>Poäng: ${points}</p>
+    <p>Rätta svar: ${correctAnswers} / ${selectedQuestions.length}</p>
+    <p>Tid: ${totalTime} sekunder</p>
+  `;
+
 }
 
 // Start over the quiz
 function playAgain() {
   resetTimer();
+  resetPoints();
+
   currentQuestionIndex = 0;
 
-// Show welcome page and hide scoreboard
-scoreboardSection.classList.add("hidden");
-welcomeSection.classList.remove("hidden");
+  // Disable and hide "End game"-btn if playing again
+  endQuizBtn.setAttribute("disabled", "true");
+  endQuizBtn.hidden = true;
+
+  selectedQuestions = selectRandomQuestions();
+
+  displayQuestion();
+  displayQuizAnswers();
+
+  points = 0;
+  correctAnswers = 0;
+  totalTime = 0;
+
+  // Show welcome page and hide scoreboard
+  scoreboardSection.classList.add("hidden");
+  welcomeSection.classList.remove("hidden");
 }
 
 init();
-
-console.log(updatePoints());
 

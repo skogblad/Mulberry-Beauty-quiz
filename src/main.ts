@@ -76,6 +76,15 @@ function displayQuestion(): void {
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
   questionElement.innerHTML = `${question.question}`;
 
+  if (currentQuestionIndex <= 8) {
+    // Show "Next question"-btn
+    nextQuestionBtn.hidden = false;
+  } else {
+    // Hide "Next question"-btn and show "End game"-btn 
+    nextQuestionBtn.hidden = true;
+    endQuizBtn.hidden = false;
+  }
+
   // Show the answer for the question as well
   displayQuizAnswers();
 }
@@ -150,9 +159,9 @@ function displayQuizAnswers() {
         }
       });
 
-      // Show "Nästa fråga"-btn
-      nextQuestionBtn.hidden = false;
-      
+      if (currentQuestionIndex >= 9) {
+        endQuizBtn.removeAttribute("disabled");
+      }
     });
   });
 }
@@ -219,12 +228,12 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
+
+  // Show scoreboard and hide quiz page
+  questionsSection.classList.add("hidden");
+  scoreboardSection.classList.remove("hidden");
   // Uppdatera total tid
   totalTime = elapsedTime;
-
-// Show scoreboard and hide quiz page
-questionsSection.classList.add("hidden");
-scoreboardSection.classList.remove("hidden");
 
 // Update the scoreboard
   const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
@@ -233,7 +242,7 @@ scoreboardSection.classList.remove("hidden");
     <p>Rätta svar: ${correctAnswers} / ${selectedQuestions.length}</p>
     <p>Tid: ${totalTime} sekunder</p>
   `;
-  console.log("Quiz slut!");
+
 }
 
 // Start over the quiz
@@ -242,6 +251,10 @@ function playAgain() {
   resetPoints();
 
   currentQuestionIndex = 0;
+
+  // Disable and hide "End game"-btn if playing again
+  endQuizBtn.setAttribute("disabled", "true");
+  endQuizBtn.hidden = true;
 
   selectedQuestions = selectRandomQuestions();
 

@@ -4,8 +4,8 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 
 ## Tidsplanering 
 - 18 & 19 december = Maria 
-- 20 & 23 december = Jonatan 
-- 27 & 30 december = Ellinor 
+- 20 & 27 december = Jonatan 
+- 23 & 30 december = Ellinor 
 - 2 & 3 januari = Alexandra 
 - 7 & 9 januari = Alicia 
 
@@ -74,5 +74,25 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 - Ingenting för tillfället
 
 ![project board 24-12-20](daily-2024-12-20.png)
+
+---
+
+### 23/12 
+#### Vad vi har gjort fram till idag: 
+- (Maria) Gömma frågorna och göra scoreboarden synlig när man svarat på 10 frågor.
+- (Alexandra) Gjorde scoreboarden med antal rätt/fel, poäng, tid och knappen "spela igen".
+- (Alicia) Meta taggar och började med iconerna för svarsalternativen vid rätt/fel.
+- (Ellinor) Fixade "spela igen" knappen så att timer, poäng, frågorna och svarsalternativen visas igen om användaren trycker på knappen.
+- (Jonatan) Fixade så att poängen fungerar med svarsalternativen korrekt och så att man inte kan ändra sitt svar efter man valt ett svar.
+
+#### Vad vi ska göra idag: 
+-  (Alla) Reviewade pull requests, löste conflicter som uppstod och merga den kod vi har gjort. Vi mergade även ihop develop branchen med main.
+-  Alla tar julledigt fram till fredag den 27 December!🎄
+-  (Ellinor) Merga develop branch till main.
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+![project board 24-12-23](daily-2024-12-23.png)
 
 ---

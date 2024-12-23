@@ -167,10 +167,6 @@ function displayQuizAnswers() {
         // Disable all radio buttons after one is pressed
         (button as HTMLInputElement).disabled = true;
       });
-
-
-      // Show "Nästa fråga"-btn
-      nextQuestionBtn.hidden = false;
       
       if (currentQuestionIndex >= 9) {
         endQuizBtn.removeAttribute("disabled");
@@ -183,17 +179,6 @@ function displayQuizAnswers() {
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
   }
-}
-
-// Function to check if the selected radio button is the correct answer
-function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
-  //const currentQuestion = selectedQuestions[currentQuestionIndex];
-
-  if (selectedRadioBtn.id === "correctAnswer") {
-    points++;
-    correctAnswers++;
-  }
-}
 
 // Function to reset the points to 0
 function resetPoints(): void {

@@ -239,14 +239,22 @@ scoreboardSection.classList.remove("hidden");
 // Start over the quiz
 function playAgain() {
   resetTimer();
+  resetPoints();
+
   currentQuestionIndex = 0;
+
+  selectedQuestions = selectRandomQuestions();
+
+  displayQuestion();
+  displayQuizAnswers();
+
   points = 0;
   correctAnswers = 0;
   totalTime = 0;
 
-// Show welcome page and hide scoreboard
-scoreboardSection.classList.add("hidden");
-welcomeSection.classList.remove("hidden");
+  // Show welcome page and hide scoreboard
+  scoreboardSection.classList.add("hidden");
+  welcomeSection.classList.remove("hidden");
 }
 
 init();

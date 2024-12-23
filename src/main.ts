@@ -39,6 +39,8 @@ function startQuiz() {
 }
 
 // Variabel for questions
+let correctAnswers: number = 0;
+let totalTime: number = 0;
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];
 const usedQuestions: Set<IQuestion> = new Set();
@@ -72,9 +74,16 @@ function displayQuestion(): void {
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  questionElement.innerHTML = `
-    ${question.question}
-  `;
+  questionElement.innerHTML = `${question.question}`;
+
+  if (currentQuestionIndex <= 8) {
+    // Show "Next question"-btn
+    nextQuestionBtn.hidden = false;
+  } else {
+    // Hide "Next question"-btn and show "End game"-btn 
+    nextQuestionBtn.hidden = true;
+    endQuizBtn.hidden = false;
+  }
 
   // Show the answer for the question as well
   displayQuizAnswers();
@@ -108,12 +117,13 @@ function init() {
     }
 };
 
-const answersContainer = document.getElementById("answers") as HTMLElement;
+
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
+  const answersContainer = document.getElementById("answers") as HTMLElement;
   answersContainer.innerHTML = "";
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -158,11 +168,13 @@ function displayQuizAnswers() {
         (button as HTMLInputElement).disabled = true;
       });
 
-      console.log("Poäng: ", points);
 
       // Show "Nästa fråga"-btn
       nextQuestionBtn.hidden = false;
       
+      if (currentQuestionIndex >= 9) {
+        endQuizBtn.removeAttribute("disabled");
+      }
     });
   });
 }
@@ -171,6 +183,17 @@ function displayQuizAnswers() {
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
   }
+}
+
+// Function to check if the selected radio button is the correct answer
+function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
+  //const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+  if (selectedRadioBtn.id === "correctAnswer") {
+    points++;
+    correctAnswers++;
+  }
+}
 
 // Function to reset the points to 0
 function resetPoints(): void {
@@ -204,21 +227,46 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
-// Show scoreboard and hide quiz page
-questionsSection.classList.add("hidden");
-scoreboardSection.classList.remove("hidden");
 
-  console.log("Quiz slut!");
+  // Show scoreboard and hide quiz page
+  questionsSection.classList.add("hidden");
+  scoreboardSection.classList.remove("hidden");
+  // Uppdatera total tid
+  totalTime = elapsedTime;
+
+// Update the scoreboard
+  const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
+  scoreboardContainer.innerHTML = `
+    <p>Poäng: ${points}</p>
+    <p>Rätta svar: ${correctAnswers} / ${selectedQuestions.length}</p>
+    <p>Tid: ${totalTime} sekunder</p>
+  `;
+
 }
 
 // Start over the quiz
 function playAgain() {
   resetTimer();
+  resetPoints();
+
   currentQuestionIndex = 0;
 
-// Show welcome page and hide scoreboard
-scoreboardSection.classList.add("hidden");
-welcomeSection.classList.remove("hidden");
+  // Disable and hide "End game"-btn if playing again
+  endQuizBtn.setAttribute("disabled", "true");
+  endQuizBtn.hidden = true;
+
+  selectedQuestions = selectRandomQuestions();
+
+  displayQuestion();
+  displayQuizAnswers();
+
+  points = 0;
+  correctAnswers = 0;
+  totalTime = 0;
+
+  // Show welcome page and hide scoreboard
+  scoreboardSection.classList.add("hidden");
+  welcomeSection.classList.remove("hidden");
 }
 
 init();

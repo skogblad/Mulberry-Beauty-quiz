@@ -119,6 +119,7 @@ function init() {
 
 
 const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
+let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
@@ -137,28 +138,40 @@ function displayQuizAnswers() {
   })
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
-
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
       const correctAnswer = currentQuestion.correctAnswer;
-
+  
       // Resets the markings on all answers and to the default color
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
-
+  
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
-
+  
         if (answerValue === correctAnswer) {
           button.parentElement!.style.color = "green";
+          (button as HTMLInputElement).id = "correctAnswer";
         } else {
           button.parentElement!.style.color = "red";
         }
+  
+        // Check if the selected answer is correct
+        if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
+          points++;
+        }
+  
+        // Disable all radio buttons after one is pressed
+        (button as HTMLInputElement).disabled = true;
       });
 
+
+      // Show "Nästa fråga"-btn
+      nextQuestionBtn.hidden = false;
+      
       if (currentQuestionIndex >= 9) {
         endQuizBtn.removeAttribute("disabled");
       }
@@ -166,21 +179,7 @@ function displayQuizAnswers() {
   });
 }
 
-let points: number = 0;
-console.log(points);
-
-// Function to update the points
-function updatePoints(): void {
-  // Get the radio buttons shown on the page
-  const radioBtns: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type='radio']");
-  
-  // Add an event listener for each radio button and link it to the function "checkAnswers"
-  radioBtns.forEach((radioBtn) => {
-    radioBtn.addEventListener("click", () => checkAnswer(radioBtn));
-  });
-
-  // Get the "play again" button and reset points on click if it exists
-  const playAgainBtn: HTMLButtonElement | null = document.getElementById("playAgain") as HTMLButtonElement | null;
+  // Get the "play again" button and reset points on click if it exist
   if (playAgainBtn) {
     playAgainBtn.addEventListener("click", resetPoints);
   }
@@ -271,6 +270,4 @@ function playAgain() {
 }
 
 init();
-
-console.log(updatePoints());
 

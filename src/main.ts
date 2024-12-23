@@ -39,6 +39,8 @@ function startQuiz() {
 }
 
 // Variabel for questions
+let correctAnswers: number = 0;
+let totalTime: number = 0;
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];
 const usedQuestions: Set<IQuestion> = new Set();
@@ -72,9 +74,7 @@ function displayQuestion(): void {
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  questionElement.innerHTML = `
-    ${question.question}
-  `;
+  questionElement.innerHTML = `${question.question}`;
 
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn
@@ -122,6 +122,7 @@ const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElemen
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
+  const answersContainer = document.getElementById("answers") as HTMLElement;
   answersContainer.innerHTML = "";
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -187,8 +188,11 @@ function updatePoints(): void {
 
 // Function to check if the selected radio button is the correct answer
 function checkAnswer(selectedRadioBtn: HTMLInputElement): void {
+  const currentQuestion = selectedQuestions[currentQuestionIndex];
+
   if (selectedRadioBtn.id === "correctAnswer") {
     points++;
+    correctAnswers++;
   }
 }
 
@@ -224,20 +228,42 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
+
   // Show scoreboard and hide quiz page
   questionsSection.classList.add("hidden");
   scoreboardSection.classList.remove("hidden");
+  // Uppdatera total tid
+  totalTime = elapsedTime;
+
+// Update the scoreboard
+  const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
+  scoreboardContainer.innerHTML = `
+    <p>Poäng: ${points}</p>
+    <p>Rätta svar: ${correctAnswers} / ${selectedQuestions.length}</p>
+    <p>Tid: ${totalTime} sekunder</p>
+  `;
 
 }
 
 // Start over the quiz
 function playAgain() {
   resetTimer();
+  resetPoints();
+
   currentQuestionIndex = 0;
 
   // Disable and hide "End game"-btn if playing again
   endQuizBtn.setAttribute("disabled", "true");
   endQuizBtn.hidden = true;
+
+  selectedQuestions = selectRandomQuestions();
+
+  displayQuestion();
+  displayQuizAnswers();
+
+  points = 0;
+  correctAnswers = 0;
+  totalTime = 0;
 
   // Show welcome page and hide scoreboard
   scoreboardSection.classList.add("hidden");

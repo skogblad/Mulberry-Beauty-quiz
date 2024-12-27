@@ -123,7 +123,6 @@ let points: number = 0;
 function displayQuizAnswers() {
   
   const answersContainer = document.getElementById("answers") as HTMLElement;
-  
   answersContainer.innerHTML = "";
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -135,7 +134,7 @@ function displayQuizAnswers() {
         <span>${answer}</span>
       </label>
     `;
-  })
+  });
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
 
@@ -163,6 +162,11 @@ function displayQuizAnswers() {
           icon.textContent = "check";
           icon.ariaLabel = "Right answer";
           labelForRadioBtn.appendChild(icon);
+
+          
+          if ((button as HTMLInputElement).checked) {
+            correctAnswers++;
+          }
         } else {
           labelForRadioBtn.style.color = "red";
 
@@ -172,14 +176,14 @@ function displayQuizAnswers() {
           icon.ariaLabel = "Wrong answer";
           labelForRadioBtn.appendChild(icon);
         }
+
+         // Disable all radio buttons after one is pressed
+         (button as HTMLInputElement).disabled = true;
   
         // Check if the selected answer is correct
         if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
           points++;
         }
-  
-        // Disable all radio buttons after one is pressed
-        (button as HTMLInputElement).disabled = true;
       });
       
       if (currentQuestionIndex >= 9) {
@@ -249,6 +253,8 @@ function playAgain() {
   resetPoints();
 
   currentQuestionIndex = 0;
+  correctAnswers = 0; 
+  points = 0;
 
   // Disable and hide "End game"-btn if playing again
   endQuizBtn.setAttribute("disabled", "true");
@@ -259,8 +265,6 @@ function playAgain() {
   displayQuestion();
   displayQuizAnswers();
 
-  points = 0;
-  correctAnswers = 0;
   totalTime = 0;
 
   // Show welcome page and hide scoreboard

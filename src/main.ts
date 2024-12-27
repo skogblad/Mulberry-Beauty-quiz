@@ -184,7 +184,10 @@ function displayQuizAnswers() {
         // Disable all radio buttons after one is pressed
         (button as HTMLInputElement).disabled = true;
       });
-      
+
+      // Enable next question-btn 
+      nextQuestionBtn!.removeAttribute("disabled");
+
       if (currentQuestionIndex >= 9) {
         endQuizBtn.removeAttribute("disabled");
       }

@@ -74,7 +74,7 @@ function displayQuestion(): void {
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  questionElement.innerHTML = `${question.question}`;
+  questionElement.textContent = `${question.question}`;
 
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn

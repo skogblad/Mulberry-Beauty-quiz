@@ -4,8 +4,8 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 
 ## Tidsplanering 
 - 18 & 19 december = Maria 
-- 20 & 27 december = Jonatan 
-- 23 & 30 december = Ellinor 
+- 20 & 30 december = Jonatan 
+- 23 & 27 december = Ellinor 
 - 2 & 3 januari = Alexandra 
 - 7 & 9 januari = Alicia 
 
@@ -96,3 +96,34 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 ![project board 24-12-23](daily-2024-12-23.png)
 
 ---
+
+### 27/12 
+#### Vad vi har gjort fram till idag: 
+- (Alla) Jullediga! 🎄
+- (Alicia) La in iconer för rätt/fel svar.
+
+#### Vad vi ska göra idag: 
+-  (Alla) Förbereda oss inför avstämningspresentationen som är på måndag. Gå igenom feedback som vi fått och dela ut nya task samt merga in  Alicias kod till develop, sen till main.
+-  (Ellinor) Ladda upp från develop till main. Ändra till textContent så det blir mer enhetligt.
+-  (Maria) Fixa "Nästa fråga" knappen så den inte går att trycka på om man inte valt ett svar.
+-  (Jonatan) Style på tid och titel.
+-  (Alexandra) Fixa så att antal rätt fungerar i scoreboarden.
+-  (Alicia) Fixar nextQuestionBtn så att den ligger som en variabel.
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+![project board 24-12-27](daily-2024-12-27.png)
+
+---
+
+## Retro sprint 1
+
+### Vad har gått bra?
+-  dd
+
+### Vad har gått mindre bra?
+-  dd
+
+### Vad kan förbättras till nästa sprint?
+-  dd

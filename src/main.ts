@@ -76,6 +76,9 @@ function displayQuestion(): void {
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
   questionElement.textContent = `${question.question}`;
 
+  // Disable "Next question"-btn 
+  nextQuestionBtn!.setAttribute("disabled", "true");
+
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn
     nextQuestionBtn.hidden = false;

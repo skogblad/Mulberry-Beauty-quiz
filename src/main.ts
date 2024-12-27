@@ -123,7 +123,9 @@ let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
+  
   const answersContainer = document.getElementById("answers") as HTMLElement;
+  
   answersContainer.innerHTML = "";
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -138,6 +140,7 @@ function displayQuizAnswers() {
   })
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
+
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
@@ -151,12 +154,25 @@ function displayQuizAnswers() {
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
-  
+        const labelForRadioBtn = button.parentElement!;
+
         if (answerValue === correctAnswer) {
-          button.parentElement!.style.color = "green";
+          labelForRadioBtn.style.color = "green";
           (button as HTMLInputElement).id = "correctAnswer";
+
+          const icon = document.createElement("span");
+          icon.className = "material-symbols-outlined";
+          icon.textContent = "check";
+          icon.ariaLabel = "Right answer";
+          labelForRadioBtn.appendChild(icon);
         } else {
-          button.parentElement!.style.color = "red";
+          labelForRadioBtn.style.color = "red";
+
+          const icon = document.createElement("span");
+          icon.className = "material-symbols-outlined";
+          icon.textContent = "close";
+          icon.ariaLabel = "Wrong answer";
+          labelForRadioBtn.appendChild(icon);
         }
   
         // Check if the selected answer is correct

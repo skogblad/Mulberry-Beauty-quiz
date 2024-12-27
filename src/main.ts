@@ -67,10 +67,6 @@ const questionElement = document.getElementById("question")!;
 
 // Function for display a question
 function displayQuestion(): void {
-  if (currentQuestionIndex >= selectedQuestions.length) {
-    nextQuestionBtn!.setAttribute("disabled", "true");
-    return;
-  }
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;

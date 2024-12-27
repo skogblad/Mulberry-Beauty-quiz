@@ -20,7 +20,7 @@ playAgainBtn.addEventListener("click", playAgain);
 const welcomeSection = document.getElementById("welcome") as HTMLElement;
 const questionsSection = document.getElementById("questions") as HTMLElement;
 const scoreboardSection = document.getElementById("scoreboard") as HTMLElement;
-
+const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 
 // Hide welcome page and show the quiz page
 function startQuiz() { 
@@ -35,7 +35,7 @@ function startQuiz() {
 
     displayQuestion();
 
-    document.getElementById("nextQuestionBtn")!.addEventListener("click", handleNextQuestion);
+   nextQuestionBtn!.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -68,7 +68,7 @@ const questionElement = document.getElementById("question")!;
 // Function for display a question
 function displayQuestion(): void {
   if (currentQuestionIndex >= selectedQuestions.length) {
-    document.getElementById("nextQuestionBtn")!.setAttribute("disabled", "true");
+    nextQuestionBtn!.setAttribute("disabled", "true");
     return;
   }
   
@@ -98,7 +98,7 @@ function handleNextQuestion(): void {
 
 // Start over the quiz
 function handlePlayAgain(): void {
-    document.getElementById("nextQuestionBtn")!.removeAttribute("disabled");
+    nextQuestionBtn!.removeAttribute("disabled");
     startQuiz();
 }
   
@@ -117,8 +117,6 @@ function init() {
     }
 };
 
-
-const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 let points: number = 0;
 
 // Show the answers for the quiz questions

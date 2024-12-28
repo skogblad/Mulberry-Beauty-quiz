@@ -1,3 +1,26 @@
+header {
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    border-bottom: solid 4px $black;
+    margin: 0 5%;
+    padding: 1rem 0;
+  }
+
+  div {
+    text-align: right;
+    margin-right: 2rem;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    margin: 0 5%;
+  }
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   color: $black;

@@ -91,7 +91,8 @@ $ npm run dev
 ### Validation
 
 #### HTML
-![Validation HTML](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Validation HTML 1](/documentation/validation/validation-html-quiz-1.jpg)
+![Validation HTML 2](/documentation/validation/validation-html-quiz-2.jpg)
 #### CSS 
 ![Validation CSS](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 

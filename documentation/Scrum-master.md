@@ -56,19 +56,19 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 ### 20/12 
 #### Vad vi gjorde igår: 
 - (Alla) Reviewade pull requests och merga den kod vi har gjort, skapade Develop branch som vi nu mergar till innan vi mergar till main. Fixade buggar som gjorde att vi inte kunde publicera sidan.
-- (Maria) Reviewa och hjälpa till med andras kod
-- (Alexandra) Fortsatte med timer koden och skapade en pull request för review
--  (Alicia) Se till att knapparna och funktionerna fungerar ihop med Ellinors kod
--  (Ellinor) Se till att knapparna och funktionerna fungerar ihop med Alicias kod
+- (Maria) Reviewa och hjälpa till med andras kod.
+- (Alexandra) Fortsatte med timer koden och skapade en pull request för review.
+-  (Alicia) Se till att knapparna och funktionerna fungerar ihop med Ellinors kod.
+-  (Ellinor) Se till att knapparna och funktionerna fungerar ihop med Alicias kod.
 -  (Jonatan) Fixade bug och mergade poäng koden, började med att implementera det i resten av koden.
 
 #### Vad vi ska göra idag: 
-- Granska pull requests, fixa buggar (Alla) 
-- Fortsätta med poäng funktionen, få det att uppdateras vid varje rätt svar och så att det inte går att ändra svar (Jonatan) 
-- Fixa så att svarsalternativen för fråga 10 visas (Alicia)
-- Skapa innehållet för scoreboarden i TS (Alexandra)
-- Gömma frågorna och göra scoreboarden synlig efter 10 frågor har svarats på (Maria)
-- Se till att de 10 nya frågorna visas och att allt annat nollställs när man klickar på "Spela igen" knappen (Ellinor)
+- (Alla) Granska pull requests, fixa buggar.
+- (Jonatan) Fortsätta med poäng funktionen, få det att uppdateras vid varje rätt svar och så att det inte går att ändra svar.
+- (Alicia) Fixa så att svarsalternativen för fråga 10 visas.
+- (Alexandra) Skapa innehållet för scoreboarden i TS.
+- (Maria) Gömma frågorna och göra scoreboarden synlig efter 10 frågor har svarats på.
+- (Ellinor) Se till att de 10 nya frågorna visas och att allt annat nollställs när man klickar på "Spela igen" knappen.
 
 #### Vad som kan hindra oss från att uppnå våra mål: 
 - Ingenting för tillfället
@@ -120,10 +120,38 @@ Vi kommer växla i gruppen mellan vem som är scrum-master, och dokumenterar hä
 ## Retro sprint 1
 
 ### Vad har gått bra?
--  dd
+-  Kommunikationen har hållits på en hög nivå.
+-  Merging-processen har gått fort och effektivt då vi gjort det tillsammans.
+-  Vi bröt ner uppgifter ekkeftivt, vilket gjorde det enklare.
 
 ### Vad har gått mindre bra?
--  dd
+-  Vissa tasks har varit dubletter i backloggen, vilket har varit förvirrande.
 
 ### Vad kan förbättras till nästa sprint?
--  dd
+-  Fylla på backlog mer proaktivt och ha de tydligare med vad som ska göras.
+-  Se till att man inte skapar dubletter i backloggen.
+
+### 30/12 - SPRINT 2 START
+#### Vad vi har gjort fram till idag: 
+-  (Ellinor) Ladda upp från develop till main. Ändra till textContent så det blir mer enhetligt.
+-  (Maria) Fixa "Nästa fråga" knappen så den inte går att trycka på om man inte valt ett svar.
+-  (Jonatan) Style på tid och titel.
+-  (Alexandra) Fixa så att antal rätt fungerar i scoreboarden.
+-  (Alicia) Fixar nextQuestionBtn så att den ligger som en variabel.
+
+#### Vad vi ska göra idag: 
+-  (Alla) Lägga upp ny sprintplanering och tillldela uppgifter.
+
+Till nästa daily efter årsskiftet:
+- (Ellinor) Se till att det faktiskt är 10 nya frågor under den andra omgången.
+- (Maria) Validera HTML/CSS och sedan skriva en README.md för projektet.
+- (Jonatan) CSS: Style på klickbara knappar, bättre mobilanpassning, bättre style på svaren och eventuallt lägga in ett nytt font.
+- (Alexandra) Lägga in en text som visar om användaren har svarat rätt eller fel efter registrerat svar.
+- (Alicia) Se till att tabbningen fungerar på sidan (a11y) och gå igenom "vanliga misstag" från tidigare projekt.
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+![project board 24-12-30](daily-2024-12-30.png)
+
+---

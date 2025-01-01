@@ -155,3 +155,16 @@ Till nästa daily efter årsskiftet:
 ![project board 24-12-30](daily-2024-12-30.png)
 
 ---
+
+
+### 2/1 
+#### Vad vi har gjort fram till idag: 
+
+
+#### Vad vi ska göra idag: 
+
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+!bild på backlog

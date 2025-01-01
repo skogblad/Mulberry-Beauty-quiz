@@ -5,29 +5,30 @@ header {
   h1 {
     text-align: center;
     text-transform: uppercase;
-    font-size: 3rem;
+    font-size: 2rem;
     border-bottom: solid 4px $black;
-    margin: 0 5%;
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 
+  /* Timer */
   div {
     text-align: right;
     margin-right: 2rem;
-    font-size: 1.75rem;
+    font-size: 1.35rem;
     font-weight: bold;
     padding-top: 1rem;
-    margin: 0 5%;
+    margin: 0;
   }
 }
 
 body {
   font-family: Helvetica, Arial, sans-serif;
   color: $black;
+  margin-inline: 5%;
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 button {
@@ -37,10 +38,16 @@ button {
   border: none;
   border-radius: 2rem;
   padding: 1rem;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 button:disabled {
   background-color: $grey;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
 }
 
 .welcome {
@@ -69,4 +76,45 @@ button:disabled {
   position: relative;
   bottom: -8px;
   font-size: 30px;
+}
+
+.question-container {
+  .question {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .answers {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for stacking */
+    gap: 2rem;
+    margin: 0 auto;
+    padding-block: 2rem;
+  
+    label {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 44px; /* Matches the height of the radio button */
+      font-size: 1.25rem;
+      margin-left: 3rem;
+  
+      input {
+        width: 44px;
+        height: 44px;
+        vertical-align: middle;
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+.scoreboard-title {
+  margin-bottom: 0;
+}
+.scoreboard-container {
+  font-size: 1.25rem;
+  margin-block: 1.5rem;
+
+  span {
+    font-weight: bold;
+  }
 }

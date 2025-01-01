@@ -242,9 +242,9 @@ function endQuiz() {
 // Update the scoreboard
   const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
   scoreboardContainer.innerHTML = `
-    <p>Poäng: ${points}</p>
-    <p>Rätta svar: ${correctAnswers} / ${selectedQuestions.length}</p>
-    <p>Tid: ${totalTime} sekunder</p>
+    <p><span>Poäng:</span> ${points}</p>
+    <p><span>Rätta svar:</span> ${correctAnswers} / ${selectedQuestions.length}</p>
+    <p><span>Tid:</span> ${totalTime} sekunder</p>
   `;
 
 }

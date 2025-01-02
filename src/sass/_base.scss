@@ -50,6 +50,10 @@ button:not(:disabled) {
   cursor: pointer;
 }
 
+input[type="radio"]:not(:disabled) {
+  cursor: pointer;
+}
+
 .welcome {
   display: flex;
   flex-direction: column;

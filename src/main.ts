@@ -141,6 +141,35 @@ function displayQuizAnswers() {
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
 
+  // Handle keyboard for navigation with left & right arrows
+  radioButtons.forEach((radioButton, index) => {
+    (radioButton as HTMLInputElement).addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+
+        let nextIndex = index;
+
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          nextIndex = (index + 1);
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          nextIndex = (index - 1);
+        }
+
+        const nextRadioBtn = radioButtons[nextIndex] as HTMLInputElement;
+        if (nextRadioBtn) nextRadioBtn.focus();
+      }
+
+      // Marks selected answer with Enter or Space
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (!(radioButton as HTMLInputElement).checked) {
+          (radioButton as HTMLInputElement).checked = true;
+          radioButton.dispatchEvent(new Event("change"));
+        }
+      }
+    });
+  });
+
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {

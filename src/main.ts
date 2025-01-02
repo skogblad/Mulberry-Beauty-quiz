@@ -45,23 +45,25 @@ let correctAnswers: number = 0;
 let totalTime: number = 0;
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];
-const usedQuestions: Set<IQuestion> = new Set();
+const usedQuestions: Set<number> = new Set();
 
 // Function for randomize questions
 function selectRandomQuestions(): IQuestion[] {
-    const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q));
-  
-    // If the user played two times the quiz starts over
-    if (availableQuestions.length < 10) {
-      usedQuestions.clear(); 
-      availableQuestions.push(...quizQuestions);
-    }
-  
-    const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-    const questions = shuffled.slice(0, 10);
-  
-    questions.forEach((q) => usedQuestions.add(q)); 
-    return questions;
+  // If all question is used, reset
+  if (usedQuestions.size === quizQuestions.length) {
+    usedQuestions.clear();
+  }
+
+  const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
+
+  const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
+
+  const questions = shuffled.slice(0, 10);
+
+  // Add to usedQuestions by id
+  questions.forEach((q) => usedQuestions.add(q.id));
+
+  return questions;
 }
 
 const questionTitle = document.getElementById("questionTitle")!;

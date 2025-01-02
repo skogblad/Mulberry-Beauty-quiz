@@ -11,6 +11,8 @@ let isTimerRunning: boolean = false;
 const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
 const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
 const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
+const feedbackElement = document.getElementById("feedback") as HTMLParagraphElement;
+
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
@@ -146,6 +148,8 @@ function displayQuizAnswers() {
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
+
+      let isAnswerCorrect = false;
   
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
@@ -165,6 +169,7 @@ function displayQuizAnswers() {
           
           if ((button as HTMLInputElement).checked) {
             correctAnswers++;
+            isAnswerCorrect = true;
           }
         } else {
           labelForRadioBtn.style.color = "red";
@@ -184,6 +189,15 @@ function displayQuizAnswers() {
           points++;
         }
       });
+
+        // Show feedback to the user
+        if (isAnswerCorrect) {
+          feedbackElement.textContent = "Rätt svar!";
+          feedbackElement.style.color = "green";
+        } else {
+          feedbackElement.textContent = "Fel svar!";
+          feedbackElement.style.color = "red";
+        }
 
       // Enable next question-btn 
       nextQuestionBtn!.removeAttribute("disabled");

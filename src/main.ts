@@ -11,6 +11,8 @@ let isTimerRunning: boolean = false;
 const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
 const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
 const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
+const feedbackElement = document.getElementById("feedback") as HTMLParagraphElement;
+
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
@@ -43,23 +45,25 @@ let correctAnswers: number = 0;
 let totalTime: number = 0;
 let currentQuestionIndex = 0;
 let selectedQuestions: IQuestion[] = [];
-const usedQuestions: Set<IQuestion> = new Set();
+const usedQuestions: Set<number> = new Set();
 
 // Function for randomize questions
 function selectRandomQuestions(): IQuestion[] {
-    const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q));
-  
-    // If the user played two times the quiz starts over
-    if (availableQuestions.length < 10) {
-      usedQuestions.clear(); 
-      availableQuestions.push(...quizQuestions);
-    }
-  
-    const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-    const questions = shuffled.slice(0, 10);
-  
-    questions.forEach((q) => usedQuestions.add(q)); 
-    return questions;
+  // If all question is used, reset
+  if (usedQuestions.size === quizQuestions.length) {
+    usedQuestions.clear();
+  }
+
+  const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
+
+  const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
+
+  const questions = shuffled.slice(0, 10);
+
+  // Add to usedQuestions by id
+  questions.forEach((q) => usedQuestions.add(q.id));
+
+  return questions;
 }
 
 const questionTitle = document.getElementById("questionTitle")!;
@@ -137,6 +141,35 @@ function displayQuizAnswers() {
  
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
 
+  // Handle keyboard for navigation with left & right arrows
+  radioButtons.forEach((radioButton, index) => {
+    (radioButton as HTMLInputElement).addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+
+        let nextIndex = index;
+
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          nextIndex = (index + 1);
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          nextIndex = (index - 1);
+        }
+
+        const nextRadioBtn = radioButtons[nextIndex] as HTMLInputElement;
+        if (nextRadioBtn) nextRadioBtn.focus();
+      }
+
+      // Marks selected answer with Enter or Space
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (!(radioButton as HTMLInputElement).checked) {
+          (radioButton as HTMLInputElement).checked = true;
+          radioButton.dispatchEvent(new Event("change"));
+        }
+      }
+    });
+  });
+
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
@@ -146,6 +179,8 @@ function displayQuizAnswers() {
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
+
+      let isAnswerCorrect = false;
   
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
@@ -165,6 +200,7 @@ function displayQuizAnswers() {
           
           if ((button as HTMLInputElement).checked) {
             correctAnswers++;
+            isAnswerCorrect = true;
           }
         } else {
           labelForRadioBtn.style.color = "red";
@@ -184,6 +220,15 @@ function displayQuizAnswers() {
           points++;
         }
       });
+
+        // Show feedback to the user
+        if (isAnswerCorrect) {
+          feedbackElement.textContent = "Rätt svar!";
+          feedbackElement.style.color = "green";
+        } else {
+          feedbackElement.textContent = "Fel svar!";
+          feedbackElement.style.color = "red";
+        }
 
       // Enable next question-btn 
       nextQuestionBtn!.removeAttribute("disabled");

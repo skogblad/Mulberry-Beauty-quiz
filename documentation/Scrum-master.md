@@ -157,14 +157,3 @@ Till nästa daily efter årsskiftet:
 ---
 
 
-### 2/1 
-#### Vad vi har gjort fram till idag: 
-
-
-#### Vad vi ska göra idag: 
-
-
-#### Vad som kan hindra oss från att uppnå våra mål: 
-- Inget just nu.
-
-!bild på backlog

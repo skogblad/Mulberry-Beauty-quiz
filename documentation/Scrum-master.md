@@ -152,8 +152,29 @@ Till nästa daily efter årsskiftet:
 #### Vad som kan hindra oss från att uppnå våra mål: 
 - Inget just nu.
 
-![project board 24-12-30](daily-2024-12-30.png)
+![project board 25-01-02](daily-2024-12-30.png)
 
 ---
+
+### 2/1 
+#### Vad vi har gjort fram till idag: 
+-  (Alla) merga koden
+-  (Ellinor) fixat så att de kommer 10 nya frågor kommer när man trycker spela igen.
+-  (Maria) validera, README
+-  (Jonatan) styla svaren på frågorna, fixat klickbara knappar, stylat scorboard och ändrat fontstorlek i mobilen. 
+-  (Alexandra) lagt till om man fick rätt eller fel 
+-  (Alicia) fixat tab-bug, gått igenom "vanliga missar"
+
+#### Vad vi ska göra idag: 
+-  (Ellinor) mörkt/ljust tema
+-  (Maria) kolla skärmläsare så texten läser upp för blinda
+-  (Jonatan) ändra font 
+-  (Alexandra) rensa att rätt och fel svar försvinner när man trycker på nästa fråga
+-  (Alicia)  gör vanliga misstag
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+![project board 25-01-02](daily-2025-01-02.png)
 
 

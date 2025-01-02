@@ -1,6 +1,18 @@
 import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
+//Theme switch
+const themeToggleButton = document.getElementById('themeToggle')!;
+const body = document.body;
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.classList.toggle('dark', currentTheme === 'dark');
+
+themeToggleButton.addEventListener('click', () => {
+  const isDark = body.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
 // Variables for quiz and timer
 const timerElement = document.getElementById("timer") as HTMLElement;
 let timerInterval: number;

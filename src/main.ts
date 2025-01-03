@@ -122,23 +122,23 @@ function handleNextQuestion(): void {
 
 // Start over the quiz
 function handlePlayAgain(): void {
-    nextQuestionBtn!.removeAttribute("disabled");
-    startQuiz();
+  nextQuestionBtn!.removeAttribute("disabled");
+  startQuiz();
 }
   
 // When the page is loaded
 function init() {
-    const startQuizButton = document.getElementById("startQuiz");
-    const playAgainButton = document.getElementById("playAgain");
-  
-    // If the buttons exist, add event listener
-    if (startQuizButton) {
-      startQuizButton.addEventListener("click", startQuiz);
-    }
-  
-    if (playAgainButton) {
-      playAgainButton.addEventListener("click", handlePlayAgain);
-    }
+  const startQuizButton = document.getElementById("startQuiz");
+  const playAgainButton = document.getElementById("playAgain");
+
+  // If the buttons exist, add event listener
+  if (startQuizButton) {
+    startQuizButton.addEventListener("click", startQuiz);
+  }
+
+  if (playAgainButton) {
+    playAgainButton.addEventListener("click", handlePlayAgain);
+  }
 };
 
 let points: number = 0;
@@ -218,7 +218,6 @@ function displayQuizAnswers() {
           icon.ariaLabel = "Right answer";
           labelForRadioBtn.appendChild(icon);
 
-          
           if ((button as HTMLInputElement).checked) {
             correctAnswers++;
             isAnswerCorrect = true;
@@ -233,8 +232,8 @@ function displayQuizAnswers() {
           labelForRadioBtn.appendChild(icon);
         }
 
-         // Disable all radio buttons after one is pressed
-         (button as HTMLInputElement).disabled = true;
+        // Disable all radio buttons after one is pressed
+        (button as HTMLInputElement).disabled = true;
   
         // Check if the selected answer is correct
         if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
@@ -242,14 +241,14 @@ function displayQuizAnswers() {
         }
       });
 
-        // Show feedback to the user
-        if (isAnswerCorrect) {
-          feedbackElement.textContent = "Rätt svar!";
-          feedbackElement.style.color = "green";
-        } else {
-          feedbackElement.textContent = "Fel svar!";
-          feedbackElement.style.color = "red";
-        }
+      // Show feedback to the user
+      if (isAnswerCorrect) {
+        feedbackElement.textContent = "Rätt svar!";
+        feedbackElement.style.color = "green";
+      } else {
+        feedbackElement.textContent = "Fel svar!";
+        feedbackElement.style.color = "red";
+      }
 
       // Enable next question-btn 
       nextQuestionBtn!.removeAttribute("disabled");
@@ -260,11 +259,6 @@ function displayQuizAnswers() {
     });
   });
 }
-
-  // Get the "play again" button and reset points on click if it exist
-  if (playAgainBtn) {
-    playAgainBtn.addEventListener("click", resetPoints);
-  }
 
 // Function to reset the points to 0
 function resetPoints(): void {
@@ -298,21 +292,19 @@ function resetTimer() {
 function endQuiz() {
   stopTimer();
 
-
   // Show scoreboard and hide quiz page
   questionsSection.classList.add("hidden");
   scoreboardSection.classList.remove("hidden");
   // Uppdatera total tid
   totalTime = elapsedTime;
 
-// Update the scoreboard
+  // Update the scoreboard
   const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
   scoreboardContainer.innerHTML = `
     <p><span>Poäng:</span> ${points}</p>
     <p><span>Rätta svar:</span> ${correctAnswers} / ${selectedQuestions.length}</p>
     <p><span>Tid:</span> ${totalTime} sekunder</p>
   `;
-
 }
 
 // Start over the quiz

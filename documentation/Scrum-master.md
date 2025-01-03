@@ -177,4 +177,25 @@ Till nästa daily efter årsskiftet:
 
 ![project board 25-01-02](daily-2025-01-02.png)
 
+--
+### 3/1 
+#### Vad vi har gjort fram till idag: 
+-  (Alla) merga koden och förde över från develop till main 
+-  (Ellinor) fixat mörkt/ljust tema fixade en bugg i frågorna
+-  (Maria) fixade så skärmläsare läser upp texten på sidan
+-  (Jonatan) la in en ny font som heter inter
+-  (Alexandra) rensa att rätt och fel svar försvinner när man trycker på nästa fråga
+-  (Alicia)  gick igenom vanliga misstag
 
+#### Vad vi ska göra idag: 
+-(alla) förberett presentation
+-  (Jonatan) startar presentationen, om quizet och hur vi delat upp de
+-  (Maria) den agila processen
+-  (Alicia)  tillgänglighet
+-  (Ellinor) kod som vi är nöjda med 
+-  (Alexandra) slutresultatet
+
+#### Vad som kan hindra oss från att uppnå våra mål: 
+- Inget just nu.
+
+![project board 25-01-02](daily-2025-01-03.png)

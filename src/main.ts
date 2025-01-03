@@ -33,11 +33,10 @@ function startQuiz() {
   questionsSection.classList.remove("hidden");
   
   selectedQuestions = selectRandomQuestions();
-    currentQuestionIndex = 0;
+  currentQuestionIndex = 0;
+  displayQuestion();
 
-    displayQuestion();
-
-   nextQuestionBtn!.addEventListener("click", handleNextQuestion);
+  nextQuestionBtn!.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -49,22 +48,25 @@ const usedQuestions: Set<number> = new Set();
 
 // Function for randomize questions
 function selectRandomQuestions(): IQuestion[] {
-  // If all question is used, reset
-  if (usedQuestions.size === quizQuestions.length) {
+  if (usedQuestions.size === quizQuestions.length || usedQuestions.size === 0) {
+    console.log("Reset used questions...");
     usedQuestions.clear();
   }
 
   const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
+  console.log("Questions availabel before shuffel", availableQuestions.map(q => q.id));
 
   const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
+  console.log("Questions after shuffel", shuffled.map(q => q.id));
 
   const questions = shuffled.slice(0, 10);
+  console.log("Questions that are going to be displayed", questions.map(q => q.id));
 
-  // Add to usedQuestions by id
   questions.forEach((q) => usedQuestions.add(q.id));
 
   return questions;
 }
+
 
 const questionTitle = document.getElementById("questionTitle")!;
 const questionElement = document.getElementById("question")!;
@@ -306,8 +308,6 @@ function playAgain() {
   // Disable and hide "End game"-btn if playing again
   endQuizBtn.setAttribute("disabled", "true");
   endQuizBtn.hidden = true;
-
-  selectedQuestions = selectRandomQuestions();
 
   displayQuestion();
   displayQuizAnswers();

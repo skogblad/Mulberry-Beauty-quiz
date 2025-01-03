@@ -1,6 +1,18 @@
 import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
+//Theme switch
+const themeToggleButton = document.getElementById('themeToggle')!;
+const body = document.body;
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.classList.toggle('dark', currentTheme === 'dark');
+
+themeToggleButton.addEventListener('click', () => {
+  const isDark = body.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
 // Variables for quiz and timer
 const timerElement = document.getElementById("timer") as HTMLElement;
 let timerInterval: number;
@@ -33,11 +45,10 @@ function startQuiz() {
   questionsSection.classList.remove("hidden");
   
   selectedQuestions = selectRandomQuestions();
-    currentQuestionIndex = 0;
+  currentQuestionIndex = 0;
+  displayQuestion();
 
-    displayQuestion();
-
-   nextQuestionBtn!.addEventListener("click", handleNextQuestion);
+  nextQuestionBtn!.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -49,22 +60,25 @@ const usedQuestions: Set<number> = new Set();
 
 // Function for randomize questions
 function selectRandomQuestions(): IQuestion[] {
-  // If all question is used, reset
-  if (usedQuestions.size === quizQuestions.length) {
+  if (usedQuestions.size === quizQuestions.length || usedQuestions.size === 0) {
+    console.log("Reset used questions...");
     usedQuestions.clear();
   }
 
   const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
+  console.log("Questions availabel before shuffel", availableQuestions.map(q => q.id));
 
   const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
+  console.log("Questions after shuffel", shuffled.map(q => q.id));
 
   const questions = shuffled.slice(0, 10);
+  console.log("Questions that are going to be displayed", questions.map(q => q.id));
 
-  // Add to usedQuestions by id
   questions.forEach((q) => usedQuestions.add(q.id));
 
   return questions;
 }
+
 
 const questionTitle = document.getElementById("questionTitle")!;
 const questionElement = document.getElementById("question")!;
@@ -94,6 +108,13 @@ function displayQuestion(): void {
 
 // Function for next question
 function handleNextQuestion(): void {
+  feedbackElement.textContent = "";
+  feedbackElement.classList.remove("correct", "incorrect");
+  feedbackElement.style.color = ""; 
+
+  const icons = document.querySelectorAll("label span.material-symbols-outlined");
+  icons.forEach(icon => icon.remove());
+
   currentQuestionIndex++;
   displayQuestion();
   displayQuizAnswers();
@@ -299,7 +320,14 @@ function playAgain() {
   endQuizBtn.setAttribute("disabled", "true");
   endQuizBtn.hidden = true;
 
-  selectedQuestions = selectRandomQuestions();
+
+  feedbackElement.textContent = "";
+  feedbackElement.classList.remove("correct", "incorrect");
+  feedbackElement.style.color = ""; 
+
+  const icons = document.querySelectorAll("label span.material-symbols-outlined");
+  icons.forEach(icon => icon.remove());
+
 
   displayQuestion();
   displayQuizAnswers();
@@ -310,6 +338,7 @@ function playAgain() {
   scoreboardSection.classList.add("hidden");
   welcomeSection.classList.remove("hidden");
 }
+
 
 init();
 

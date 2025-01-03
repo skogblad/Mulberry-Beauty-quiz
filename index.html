@@ -14,13 +14,29 @@
     <meta property="og:image" content="https://">
     <meta property="og:site_name" content="Mulberry Beauty">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> 
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   </head>
 
   <body>
     <header>
       <h1>Mulberry Beauty</h1>
-      <div id="timer">Tid: 0s</div>
+      <div class="header-container">
+        <button class="switchTheme" id="themeToggle" aria-label="Toggle theme">
+          <span class="material-symbols-outlined switch-icon" id="lightIcon">
+            light_mode
+            </span>
+          <span id="themeIcon" class="material-symbols-outlined switch-icon" id="darkIcon">
+            dark_mode
+            </span>
+        </button>
+        <div id="timer">Tid: 0s</div>
+      </div>
     </header>
     
     <main>

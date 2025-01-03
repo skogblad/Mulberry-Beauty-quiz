@@ -8,23 +8,49 @@ header {
     font-size: 2rem;
     border-bottom: solid 4px $black;
     padding: 2rem 0;
+    font-style: italic;
+    letter-spacing: 0.075rem;
   }
+}
 
+.header-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 40px;
   /* Timer */
   div {
     text-align: right;
     margin-right: 2rem;
     font-size: 1.35rem;
     font-weight: bold;
-    padding-top: 1rem;
     margin: 0;
+  }
+  .switchTheme {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .switch-icon {
+    margin: 0 8px;
   }
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  color: $black;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  color: $lightThemeText;
+  background-color: $lightTheme;
   margin-inline: 5%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: $darkTheme;
+  color: $darkThemeText;
 }
 
 h2 {
@@ -40,14 +66,23 @@ button {
   padding: 1rem;
   min-width: 44px;
   min-height: 44px;
-}
-
-button:disabled {
-  background-color: $grey;
-}
-
-button:not(:disabled) {
-  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 30px;
+  &:disabled {
+    background-color: $grey;
+    color: $darkThemeText;
+  }
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+  body.dark & {
+    background-color: $darkThemeButton;
+    color: $darkThemeTextButton;
+    &:disabled {
+      background-color: $darkThemeButtonDisabled;     
+      color: $darkThemeTextButton;          
+    }
+  }
 }
 
 input[type="radio"]:not(:disabled) {
@@ -111,9 +146,11 @@ input[type="radio"]:not(:disabled) {
     }
   }
 }
+
 .scoreboard-title {
   margin-bottom: 0;
 }
+
 .scoreboard-container {
   font-size: 1.25rem;
   margin-block: 1.5rem;
@@ -126,5 +163,4 @@ input[type="radio"]:not(:disabled) {
 .feedback {
   font-size: 1.5rem; 
   font-weight: bold; 
-
 }

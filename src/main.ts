@@ -322,7 +322,7 @@ function playAgain() {
 
   const icons = document.querySelectorAll("label span.material-symbols-outlined");
   icons.forEach(icon => icon.remove());
-  
+
   displayQuestion();
   displayQuizAnswers();
 
@@ -332,6 +332,7 @@ function playAgain() {
   scoreboardSection.classList.add("hidden");
   welcomeSection.classList.remove("hidden");
 }
+
 
 init();
 

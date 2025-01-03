@@ -8,6 +8,8 @@ header {
     font-size: 2rem;
     border-bottom: solid 4px $black;
     padding: 2rem 0;
+    font-style: italic;
+    letter-spacing: 0.075rem;
   }
 }
 
@@ -39,7 +41,7 @@ header {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   color: $lightThemeText;
   background-color: $lightTheme;
   margin-inline: 5%;

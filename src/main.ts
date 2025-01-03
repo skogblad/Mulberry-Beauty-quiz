@@ -108,6 +108,13 @@ function displayQuestion(): void {
 
 // Function for next question
 function handleNextQuestion(): void {
+  feedbackElement.textContent = "";
+  feedbackElement.classList.remove("correct", "incorrect");
+  feedbackElement.style.color = ""; 
+
+  const icons = document.querySelectorAll("label span.material-symbols-outlined");
+  icons.forEach(icon => icon.remove());
+
   currentQuestionIndex++;
   displayQuestion();
   displayQuizAnswers();
@@ -321,6 +328,15 @@ function playAgain() {
   endQuizBtn.setAttribute("disabled", "true");
   endQuizBtn.hidden = true;
 
+
+  feedbackElement.textContent = "";
+  feedbackElement.classList.remove("correct", "incorrect");
+  feedbackElement.style.color = ""; 
+
+  const icons = document.querySelectorAll("label span.material-symbols-outlined");
+  icons.forEach(icon => icon.remove());
+
+
   displayQuestion();
   displayQuizAnswers();
 
@@ -330,6 +346,7 @@ function playAgain() {
   scoreboardSection.classList.add("hidden");
   welcomeSection.classList.remove("hidden");
 }
+
 
 init();
 

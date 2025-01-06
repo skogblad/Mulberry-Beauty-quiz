@@ -66,10 +66,10 @@ function selectRandomQuestions(): IQuestion[] {
   }
 
   const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
-  console.log("Questions availabel before shuffel", availableQuestions.map(q => q.id));
+  console.log("Questions availabel before shuffle", availableQuestions.map(q => q.id));
 
   const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-  console.log("Questions after shuffel", shuffled.map(q => q.id));
+  console.log("Questions after shuffle", shuffled.map(q => q.id));
 
   const questions = shuffled.slice(0, 10);
   console.log("Questions that are going to be displayed", questions.map(q => q.id));

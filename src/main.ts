@@ -42,6 +42,8 @@ const nextQuestionBtn = document.getElementById(
   "nextQuestionBtn",
 ) as HTMLElement;
 
+const redColor = "#d51a1a";
+
 // Hide welcome page and show the quiz page
 function startQuiz() {
   startTimer();
@@ -246,7 +248,7 @@ function displayQuizAnswers() {
             isAnswerCorrect = true;
           }
         } else {
-          labelForRadioBtn.style.color = "red";
+          labelForRadioBtn.style.color = redColor;
 
           const icon = document.createElement("span");
           icon.className = "material-symbols-outlined";
@@ -273,7 +275,7 @@ function displayQuizAnswers() {
         feedbackElement.style.color = "green";
       } else {
         feedbackElement.textContent = "Fel svar!";
-        feedbackElement.style.color = "red";
+        feedbackElement.style.color = redColor;
       }
 
       // Enable next question-btn

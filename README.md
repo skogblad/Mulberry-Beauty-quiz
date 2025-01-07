@@ -1,10 +1,8 @@
-
 # Mulberry Beauty Quiz
 
-TypeScript quiz with 20 questions about geography. 
+TypeScript quiz with 20 questions about geography.
 
 [Link to live version](https://medieinstitutet.github.io/fed24d-js-intro-inl-2-quiz-mulberry-beauty/)
-
 
 ## Table of Contents
 
@@ -12,24 +10,22 @@ TypeScript quiz with 20 questions about geography.
 - [Tech](#tech)
 - [Installation](#installation)
 - [Screenshots](#screenshots)
-    - [Live version](#live-version)
-    - [Wireframes](#wireframes)
+  - [Live version](#live-version)
+  - [Wireframes](#wireframes)
 - [Documentation](#documentation)
-    - [Lighthouse report](#lighthouse-report)
-    - [Validation](#validation)
+  - [Lighthouse report](#lighthouse-report)
+  - [Validation](#validation)
 - [Acknowledgements](#acknowledgements)
 - [Authors](#authors)
 
-
 ## Features
 
-- 20 multiple choice-questions about world geography 
+- 20 multiple choice-questions about world geography
 - User gets 10 randomly selected questions when playing
 - Timer that starts counting when beginning quiz, and ends when last question is answered
 - Instant feedback whether answer was right or wrong
-- End game scoreboard where user is shown their score, time and how many correct answers where given 
-- After finished game, user is able to play again, and will get the remaining 10 questions 
-
+- End game scoreboard where user is shown their score, time and how many correct answers where given
+- After finished game, user is able to play again, and will get the remaining 10 questions
 
 ## Tech Stack
 
@@ -38,7 +34,6 @@ TypeScript quiz with 20 questions about geography.
 - Vite version 6.0.5
 - ESLint version 9.16.0
 - Prettier version 3.4.2
-
 
 ## Installation
 
@@ -58,18 +53,19 @@ $ npm install
 $ npm run dev
 ```
 
-
 ## Screenshots
 
 ### Live version
 
 #### Mobile
+
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 #### Desktop
+
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
@@ -91,17 +87,18 @@ $ npm run dev
 ### Validation
 
 #### HTML
+
 ![Validation HTML 1](/documentation/validation/validation-html-quiz-1.jpg)
 ![Validation HTML 2](/documentation/validation/validation-html-quiz-2.jpg)
-#### CSS 
-![Validation CSS](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
+#### CSS
+
+![Validation CSS](/documentation/validation/validation-css.png)
 
 ## Acknowledgements
 
- - Normalize.css from [Necolas](https://github.com/necolas/normalize.css)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-
+- Normalize.css from [Necolas](https://github.com/necolas/normalize.css)
+- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 ## Authors
 
@@ -110,4 +107,3 @@ $ npm run dev
 - [@ellinorjohansson](https://www.github.com/ellinorjohansson)
 - [@JHellberg04](https://www.github.com/JHellberg04)
 - [@maria-jon](https://www.github.com/maria-jon)
-

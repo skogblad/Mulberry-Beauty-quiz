@@ -57,19 +57,17 @@ $ npm run dev
 
 ### Live version
 
-#### Mobile
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot mobile welcome-screen](/documentation/screenshots/mobile-start.png)
+![App Screenshot mobile question display](/documentation/screenshots/mobile-question.png)
+![App Screenshot mobile question feedback](/documentation/screenshots/mobile-answer.png)
+![App Screenshot mobile scoreboard](/documentation/screenshots/mobile-scoreboard.png)
 
 #### Desktop
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot desktop welcome-screen](/documentation/screenshots/desktop-start.png)
+![App Screenshot desktop question display](/documentation/screenshots/desktop-question.png)
+![App Screenshot desktop question feedback](/documentation/screenshots/desktop-answer.png)
+![App Screenshot desktop scoreboard](/documentation/screenshots/desktop-scoreboard.png)
 
 ### Wireframes
 

@@ -20,16 +20,10 @@ let elapsedTime: number = 0;
 let isTimerRunning: boolean = false;
 
 // Start quiz button
-const startQuizBtn = document.getElementById(
-  "startQuizBtn",
-) as HTMLButtonElement;
+const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
 const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
-const playAgainBtn = document.getElementById(
-  "playAgainBtn",
-) as HTMLButtonElement;
-const feedbackElement = document.getElementById(
-  "feedback",
-) as HTMLParagraphElement;
+const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
+const feedbackElement = document.getElementById("feedback") as HTMLParagraphElement;
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
@@ -38,11 +32,7 @@ playAgainBtn.addEventListener("click", playAgain);
 const welcomeSection = document.getElementById("welcome") as HTMLElement;
 const questionsSection = document.getElementById("questions") as HTMLElement;
 const scoreboardSection = document.getElementById("scoreboard") as HTMLElement;
-const nextQuestionBtn = document.getElementById(
-  "nextQuestionBtn",
-) as HTMLElement;
-
-const redColor = "#d51a1a";
+const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 
 // Hide welcome page and show the quiz page
 function startQuiz() {
@@ -128,9 +118,7 @@ function handleNextQuestion(): void {
   feedbackElement.classList.remove("correct", "incorrect");
   feedbackElement.style.color = "";
 
-  const icons = document.querySelectorAll(
-    "label span.material-symbols-outlined",
-  );
+  const icons = document.querySelectorAll("label span.material-symbols-outlined");
   icons.forEach((icon) => icon.remove());
 
   currentQuestionIndex++;
@@ -181,9 +169,7 @@ function displayQuizAnswers() {
 
   // Handle keyboard for navigation with left & right arrows
   radioButtons.forEach((radioButton, index) => {
-    (radioButton as HTMLInputElement).addEventListener(
-      "keydown",
-      (e: KeyboardEvent) => {
+    (radioButton as HTMLInputElement).addEventListener("keydown", (e: KeyboardEvent) => {
         if (
           e.key === "ArrowLeft" ||
           e.key === "ArrowRight" ||
@@ -227,20 +213,24 @@ function displayQuizAnswers() {
       });
 
       let isAnswerCorrect = false;
+      
+      const isDarkThemeActive = body.classList.contains("dark");
+      const wrongAnswerColor = isDarkThemeActive ? "#ff4e4e" : "#d51a1a";
+      const rightAnswerColor = isDarkThemeActive ? "#0db90d" : "#0c7d0c";
 
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
         const labelForRadioBtn = button.parentElement!;
-
+        
         if (answerValue === correctAnswer) {
-          labelForRadioBtn.style.color = "green";
+          labelForRadioBtn.style.color = rightAnswerColor;
           (button as HTMLInputElement).id = "correctAnswer";
 
           const icon = document.createElement("span");
           icon.className = "material-symbols-outlined";
           icon.textContent = "check";
-          icon.ariaLabel = "Right answer";
+          icon.ariaLabel = "Rätt svar";
           labelForRadioBtn.appendChild(icon);
 
           if ((button as HTMLInputElement).checked) {
@@ -248,12 +238,12 @@ function displayQuizAnswers() {
             isAnswerCorrect = true;
           }
         } else {
-          labelForRadioBtn.style.color = redColor;
+          labelForRadioBtn.style.color = wrongAnswerColor;
 
           const icon = document.createElement("span");
           icon.className = "material-symbols-outlined";
           icon.textContent = "close";
-          icon.ariaLabel = "Wrong answer";
+          icon.ariaLabel = "Fel svar";
           labelForRadioBtn.appendChild(icon);
         }
 
@@ -262,9 +252,7 @@ function displayQuizAnswers() {
 
         // Check if the selected answer is correct
         if (
-          (button as HTMLInputElement).checked &&
-          answerValue === correctAnswer
-        ) {
+          (button as HTMLInputElement).checked && answerValue === correctAnswer) {
           points++;
         }
       });
@@ -272,10 +260,10 @@ function displayQuizAnswers() {
       // Show feedback to the user
       if (isAnswerCorrect) {
         feedbackElement.textContent = "Rätt svar!";
-        feedbackElement.style.color = "green";
+        feedbackElement.style.color = rightAnswerColor;
       } else {
         feedbackElement.textContent = "Fel svar!";
-        feedbackElement.style.color = redColor;
+        feedbackElement.style.color = wrongAnswerColor;
       }
 
       // Enable next question-btn

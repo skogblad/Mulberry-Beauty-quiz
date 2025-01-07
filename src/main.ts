@@ -2,15 +2,15 @@ import "./style.scss";
 import quizQuestions, { IQuestion } from "./questions.mts";
 
 //Theme switch
-const themeToggleButton = document.getElementById('themeToggle')!;
+const themeToggleButton = document.getElementById("themeToggle")!;
 const body = document.body;
 
-const currentTheme = localStorage.getItem('theme') || 'light';
-body.classList.toggle('dark', currentTheme === 'dark');
+const currentTheme = localStorage.getItem("theme") || "light";
+body.classList.toggle("dark", currentTheme === "dark");
 
-themeToggleButton.addEventListener('click', () => {
-  const isDark = body.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+themeToggleButton.addEventListener("click", () => {
+  const isDark = body.classList.toggle("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
 // Variables for quiz and timer
@@ -20,32 +20,37 @@ let elapsedTime: number = 0;
 let isTimerRunning: boolean = false;
 
 // Start quiz button
-const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
+const startQuizBtn = document.getElementById(
+  "startQuizBtn",
+) as HTMLButtonElement;
 const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
-const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
-const feedbackElement = document.getElementById("feedback") as HTMLParagraphElement;
-
+const playAgainBtn = document.getElementById(
+  "playAgainBtn",
+) as HTMLButtonElement;
+const feedbackElement = document.getElementById(
+  "feedback",
+) as HTMLParagraphElement;
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
 playAgainBtn.addEventListener("click", playAgain);
 
-
 const welcomeSection = document.getElementById("welcome") as HTMLElement;
 const questionsSection = document.getElementById("questions") as HTMLElement;
 const scoreboardSection = document.getElementById("scoreboard") as HTMLElement;
-const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
+const nextQuestionBtn = document.getElementById(
+  "nextQuestionBtn",
+) as HTMLElement;
 
 const redColor = "#d51a1a";
 
 // Hide welcome page and show the quiz page
-function startQuiz() { 
-
+function startQuiz() {
   startTimer();
 
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
-  
+
   selectedQuestions = selectRandomQuestions();
   currentQuestionIndex = 0;
   displayQuestion();
@@ -67,39 +72,48 @@ function selectRandomQuestions(): IQuestion[] {
     usedQuestions.clear();
   }
 
-  const availableQuestions = quizQuestions.filter((q) => !usedQuestions.has(q.id));
-  console.log("Questions availabel before shuffle", availableQuestions.map(q => q.id));
+  const availableQuestions = quizQuestions.filter(
+    (q) => !usedQuestions.has(q.id),
+  );
+  console.log(
+    "Questions availabel before shuffle",
+    availableQuestions.map((q) => q.id),
+  );
 
   const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-  console.log("Questions after shuffle", shuffled.map(q => q.id));
+  console.log(
+    "Questions after shuffle",
+    shuffled.map((q) => q.id),
+  );
 
   const questions = shuffled.slice(0, 10);
-  console.log("Questions that are going to be displayed", questions.map(q => q.id));
+  console.log(
+    "Questions that are going to be displayed",
+    questions.map((q) => q.id),
+  );
 
   questions.forEach((q) => usedQuestions.add(q.id));
 
   return questions;
 }
 
-
 const questionTitle = document.getElementById("questionTitle")!;
 const questionElement = document.getElementById("question")!;
 
 // Function for display a question
 function displayQuestion(): void {
-  
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
   questionElement.textContent = `${question.question}`;
 
-  // Disable "Next question"-btn 
+  // Disable "Next question"-btn
   nextQuestionBtn!.setAttribute("disabled", "true");
 
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn
     nextQuestionBtn.hidden = false;
   } else {
-    // Hide "Next question"-btn and show "End game"-btn 
+    // Hide "Next question"-btn and show "End game"-btn
     nextQuestionBtn.hidden = true;
     endQuizBtn.hidden = false;
   }
@@ -112,10 +126,12 @@ function displayQuestion(): void {
 function handleNextQuestion(): void {
   feedbackElement.textContent = "";
   feedbackElement.classList.remove("correct", "incorrect");
-  feedbackElement.style.color = ""; 
+  feedbackElement.style.color = "";
 
-  const icons = document.querySelectorAll("label span.material-symbols-outlined");
-  icons.forEach(icon => icon.remove());
+  const icons = document.querySelectorAll(
+    "label span.material-symbols-outlined",
+  );
+  icons.forEach((icon) => icon.remove());
 
   currentQuestionIndex++;
   displayQuestion();
@@ -127,7 +143,7 @@ function handlePlayAgain(): void {
   nextQuestionBtn!.removeAttribute("disabled");
   startQuiz();
 }
-  
+
 // When the page is loaded
 function init() {
   const startQuizButton = document.getElementById("startQuiz");
@@ -141,13 +157,12 @@ function init() {
   if (playAgainButton) {
     playAgainButton.addEventListener("click", handlePlayAgain);
   }
-};
+}
 
 let points: number = 0;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
-  
   const answersContainer = document.getElementById("answers") as HTMLElement;
   answersContainer.innerHTML = "";
 
@@ -161,50 +176,58 @@ function displayQuizAnswers() {
       </label>
     `;
   });
- 
+
   const radioButtons = document.querySelectorAll(`input[name="quizAnswer"]`);
 
   // Handle keyboard for navigation with left & right arrows
   radioButtons.forEach((radioButton, index) => {
-    (radioButton as HTMLInputElement).addEventListener("keydown", (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "ArrowUp") {
-        e.preventDefault();
+    (radioButton as HTMLInputElement).addEventListener(
+      "keydown",
+      (e: KeyboardEvent) => {
+        if (
+          e.key === "ArrowLeft" ||
+          e.key === "ArrowRight" ||
+          e.key === "ArrowDown" ||
+          e.key === "ArrowUp"
+        ) {
+          e.preventDefault();
 
-        let nextIndex = index;
+          let nextIndex = index;
 
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-          nextIndex = (index + 1);
-        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-          nextIndex = (index - 1);
+          if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+            nextIndex = index + 1;
+          } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            nextIndex = index - 1;
+          }
+
+          const nextRadioBtn = radioButtons[nextIndex] as HTMLInputElement;
+          if (nextRadioBtn) nextRadioBtn.focus();
         }
 
-        const nextRadioBtn = radioButtons[nextIndex] as HTMLInputElement;
-        if (nextRadioBtn) nextRadioBtn.focus();
-      }
-
-      // Marks selected answer with Enter or Space
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        if (!(radioButton as HTMLInputElement).checked) {
-          (radioButton as HTMLInputElement).checked = true;
-          radioButton.dispatchEvent(new Event("change"));
+        // Marks selected answer with Enter or Space
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (!(radioButton as HTMLInputElement).checked) {
+            (radioButton as HTMLInputElement).checked = true;
+            radioButton.dispatchEvent(new Event("change"));
+          }
         }
-      }
-    });
+      },
+    );
   });
 
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
       const correctAnswer = currentQuestion.correctAnswer;
-  
+
       // Resets the markings on all answers and to the default color
       document.querySelectorAll("label").forEach((label) => {
         label.style.color = "initial";
       });
 
       let isAnswerCorrect = false;
-  
+
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
@@ -236,9 +259,12 @@ function displayQuizAnswers() {
 
         // Disable all radio buttons after one is pressed
         (button as HTMLInputElement).disabled = true;
-  
+
         // Check if the selected answer is correct
-        if ((button as HTMLInputElement).checked && answerValue === correctAnswer) {
+        if (
+          (button as HTMLInputElement).checked &&
+          answerValue === correctAnswer
+        ) {
           points++;
         }
       });
@@ -252,7 +278,7 @@ function displayQuizAnswers() {
         feedbackElement.style.color = redColor;
       }
 
-      // Enable next question-btn 
+      // Enable next question-btn
       nextQuestionBtn!.removeAttribute("disabled");
 
       if (currentQuestionIndex >= 9) {
@@ -265,16 +291,15 @@ function displayQuizAnswers() {
 // Function to reset the points to 0
 function resetPoints(): void {
   points = 0;
-} 
+}
 
 // Timer functions
 function startTimer() {
-  if (isTimerRunning) 
-    return; 
-  
+  if (isTimerRunning) return;
+
   timerInterval = setInterval(() => {
     elapsedTime++;
-    timerElement.textContent = `Tid: ${elapsedTime}s`; 
+    timerElement.textContent = `Tid: ${elapsedTime}s`;
   }, 1000);
 
   isTimerRunning = true;
@@ -301,7 +326,9 @@ function endQuiz() {
   totalTime = elapsedTime;
 
   // Update the scoreboard
-  const scoreboardContainer = document.getElementById("scoreboardContainer") as HTMLElement;
+  const scoreboardContainer = document.getElementById(
+    "scoreboardContainer",
+  ) as HTMLElement;
   scoreboardContainer.innerHTML = `
     <p><span>Poäng:</span> ${points}</p>
     <p><span>Rätta svar:</span> ${correctAnswers} / ${selectedQuestions.length}</p>
@@ -315,21 +342,21 @@ function playAgain() {
   resetPoints();
 
   currentQuestionIndex = 0;
-  correctAnswers = 0; 
+  correctAnswers = 0;
   points = 0;
 
   // Disable and hide "End game"-btn if playing again
   endQuizBtn.setAttribute("disabled", "true");
   endQuizBtn.hidden = true;
 
-
   feedbackElement.textContent = "";
   feedbackElement.classList.remove("correct", "incorrect");
-  feedbackElement.style.color = ""; 
+  feedbackElement.style.color = "";
 
-  const icons = document.querySelectorAll("label span.material-symbols-outlined");
-  icons.forEach(icon => icon.remove());
-
+  const icons = document.querySelectorAll(
+    "label span.material-symbols-outlined",
+  );
+  icons.forEach((icon) => icon.remove());
 
   displayQuestion();
   displayQuizAnswers();
@@ -341,6 +368,4 @@ function playAgain() {
   welcomeSection.classList.remove("hidden");
 }
 
-
 init();
-

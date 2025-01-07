@@ -15,8 +15,8 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 40px;
   /* Timer */
   div {
@@ -41,11 +41,13 @@ header {
 }
 
 body {
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
   color: $lightThemeText;
-  background-color: $lightGreen; 
+  background-color: $lightGreen;
   margin-inline: 5%;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 body.dark {
@@ -66,7 +68,9 @@ button {
   padding: 1rem;
   min-width: 44px;
   min-height: 44px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   margin-bottom: 30px;
   &:disabled {
     background-color: $grey;
@@ -79,8 +83,8 @@ button {
     background-color: $darkThemeButton;
     color: $darkThemeTextButton;
     &:disabled {
-      background-color: $darkThemeButtonDisabled;     
-      color: $darkThemeTextButton;          
+      background-color: $darkThemeButtonDisabled;
+      color: $darkThemeTextButton;
     }
   }
 }
@@ -129,14 +133,14 @@ input[type="radio"]:not(:disabled) {
     gap: 2rem;
     margin: 0 auto;
     padding-block: 2rem;
-  
+
     label {
       display: inline-block;
       vertical-align: middle;
       line-height: 44px; /* Matches the height of the radio button */
       font-size: 1.25rem;
       margin-left: 3rem;
-  
+
       input {
         width: 44px;
         height: 44px;
@@ -161,6 +165,6 @@ input[type="radio"]:not(:disabled) {
 }
 
 .feedback {
-  font-size: 1.5rem; 
-  font-weight: bold; 
+  font-size: 1.5rem;
+  font-weight: bold;
 }

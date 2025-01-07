@@ -86,7 +86,7 @@ $ npm run dev
 
 ### Lighthouse report
 
-![Lighthouse](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Lighthouse_report_page-0001](https://github.com/user-attachments/assets/06af6b10-ee50-41d4-a4be-7611717439ee)
 
 ### Validation
 

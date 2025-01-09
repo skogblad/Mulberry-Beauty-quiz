@@ -263,3 +263,26 @@ Till nästa daily efter årsskiftet:
 - Inget just nu.
 
 ![project board 25-01-07](daily-2025-01-07.png)
+
+--
+
+### 9/1
+
+#### Vad vi har gjort fram till idag:
+
+- (Alla) jobbat med sin del av presentationen
+- (Ellinor) kollat quizet i olika webbläsare
+- (Maria) uppdaterat Readme med dokumentation
+- (Jonatan) formaterat koden
+- (Alexandra) lagt in bagrundsfärg
+- (Alicia) dubbelkollat validering, ändrat textfärg och tagit bort desktop scss-fil
+
+#### Vad vi ska göra idag:
+
+- (Alla) fortsätta att förbereda sig inför presentation vid behov
+
+#### Vad som kan hindra oss från att uppnå våra mål:
+
+- Inget just nu.
+
+![project board 25-01-09](daily-2025-01-09.png)

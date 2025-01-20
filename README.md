@@ -37,15 +37,7 @@ TypeScript quiz with 20 questions about geography.
 
 ## Installation
 
-Install fed24d-js-intro-inl-2-quiz-mulberry-beauty locally with npm
-
 ```bash
-# Clone this repository
-$ git clone https://github.com/Medieinstitutet/fed24d-js-intro-inl-2-quiz-mulberry-beauty
-
-# Go into the repository
-$ cd fed24d-js-intro-inl-2-quiz-mulberry-beauty
-
 # Install dependencies
 $ npm install
 
@@ -56,13 +48,6 @@ $ npm run dev
 ## Screenshots
 
 ### Live version
-
-![App Screenshot mobile welcome-screen](/documentation/screenshots/mobile-start.png)
-![App Screenshot mobile question display](/documentation/screenshots/mobile-question.png)
-![App Screenshot mobile question feedback](/documentation/screenshots/mobile-answer.png)
-![App Screenshot mobile scoreboard](/documentation/screenshots/mobile-scoreboard.png)
-
-#### Desktop
 
 ![App Screenshot desktop welcome-screen](/documentation/screenshots/desktop-start.png)
 ![App Screenshot desktop question display](/documentation/screenshots/desktop-question.png)

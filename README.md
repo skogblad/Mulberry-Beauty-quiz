@@ -2,7 +2,7 @@
 
 TypeScript quiz with 20 questions about geography.
 
-[Link to live version](https://medieinstitutet.github.io/fed24d-js-intro-inl-2-quiz-mulberry-beauty/)
+[Link to live version](https://skogblad.github.io/Mulberry-Beauty-quiz/)
 
 ## Table of Contents
 

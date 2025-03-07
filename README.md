@@ -7,7 +7,7 @@ TypeScript quiz with 20 questions about geography.
 ## Table of Contents
 
 - [Features](#features)
-- [Tech](#tech)
+- [Tech](#tech-stack)
 - [Installation](#installation)
 - [Screenshots](#screenshots)
   - [Live version](#live-version)
